@@ -30,6 +30,11 @@ namespace ProyectoTienda.Clientes
 
         // STATIC METHODS
 
+        public static Cliente ObtenerConUsuario(string usuario)
+        {
+            return clientes[usuario];
+        }
+
         public static IEnumerable<Cliente> ObtenerClientes()
         {
             foreach(KeyValuePair<string, Cliente> cliente in clientes)

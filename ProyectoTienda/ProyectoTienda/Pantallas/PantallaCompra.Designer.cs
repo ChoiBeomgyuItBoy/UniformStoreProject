@@ -33,6 +33,7 @@ namespace ProyectoTienda.Pantallas
             this.PanelTitulo = new System.Windows.Forms.Panel();
             this.CompraTitulo = new System.Windows.Forms.Label();
             this.Titulo = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.PanelTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +43,7 @@ namespace ProyectoTienda.Pantallas
             this.PanelTitulo.Controls.Add(this.Titulo);
             resources.ApplyResources(this.PanelTitulo, "PanelTitulo");
             this.PanelTitulo.Name = "PanelTitulo";
+
             // 
             // CompraTitulo
             // 
@@ -53,10 +55,18 @@ namespace ProyectoTienda.Pantallas
             resources.ApplyResources(this.Titulo, "Titulo");
             this.Titulo.Name = "Titulo";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
             // PantallaCompra
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.PanelTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PantallaCompra";
@@ -71,5 +81,6 @@ namespace ProyectoTienda.Pantallas
         private System.Windows.Forms.Panel PanelTitulo;
         private System.Windows.Forms.Label CompraTitulo;
         private System.Windows.Forms.Label Titulo;
+        private System.Windows.Forms.Panel panel1;
     }
 }
