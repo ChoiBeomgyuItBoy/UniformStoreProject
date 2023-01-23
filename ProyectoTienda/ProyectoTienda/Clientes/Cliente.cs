@@ -9,8 +9,6 @@ namespace ProyectoTienda.Clientes
         private string nombreCliente = "";
         private string telefono = "";
         private string email = "";
-
-        // TO USE
         private string fechaCreacion = "";
         private float deuda = 0;
 
@@ -32,13 +30,28 @@ namespace ProyectoTienda.Clientes
             clientes[usuario] = this;
         }
 
+        // TEST - DELETE WHEN NO LONGER NECESSARY
+
+        public static void CrearClientesParaDebug()
+        {
+            Hijo hijoTest = new Hijo(Departamento.Kinder, "Hijo Test");
+            Cliente clienteTest = new Cliente("testUser", "Test Name", "5566778899", "hhh@gmail.com", hijoTest);
+
+            clientes[clienteTest.usuario] = clienteTest;
+        }
+
         // GETTERS
 
         public string ObtenerUsuario() => usuario;
+
         public string ObtenerNombre() => nombreCliente;
+
         public string ObtenerEmail() => email;
+
         public string ObtenerTelefono() => telefono;
+
         public string ObtenerFechaCreacion() => fechaCreacion;
+
         public float ObtenerDeuda() => deuda;
 
         public IEnumerable<Hijo> ObtenerHijos()
@@ -47,6 +60,23 @@ namespace ProyectoTienda.Clientes
             {
                 yield return hijo;
             }
+        }
+
+        // SETTERS
+
+        public void CambiarNombre(string nuevoNombre)
+        {
+            nombreCliente = nuevoNombre;
+        }
+
+        public void CambiarEmail(string nuevoEmail)
+        {
+            email = nuevoEmail;
+        }
+
+        public void CambiarTelefono(string nuevoTelefono)
+        {
+            telefono = nuevoTelefono;
         }
 
         // STATIC METHODS

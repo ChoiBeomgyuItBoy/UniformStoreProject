@@ -1,13 +1,6 @@
 ﻿using ProyectoTienda.Clientes;
 using ProyectoTienda.Utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTienda.Pantallas
@@ -16,13 +9,19 @@ namespace ProyectoTienda.Pantallas
     {
         private Cliente cliente;
 
+        public static event Action informacionActualizada;
+
         public PantallaConsultaCliente(Cliente cliente)
         {
             this.cliente = cliente;
+
             InitializeComponent();
             DisplayCliente();
             DisplayHijos();
+            AbilitarInputDeTexto(false);
         }
+
+        // FUNCTIONALITY
 
         private void DisplayCliente()
         {
@@ -42,9 +41,47 @@ namespace ProyectoTienda.Pantallas
             }
         }
 
+        private void CambiarInformacion()
+        {
+            cliente.CambiarNombre(ConsultaNombreTexto.Text);
+            cliente.CambiarEmail(ConsultaEmailTexto.Text);
+            cliente.CambiarTelefono(ConsultaTelefonoTexto.Text);
+        }
+
+        private void AbilitarInputDeTexto(bool estado)
+        {
+            ConsultaNombreTexto.Enabled = estado;
+            ConsultaEmailTexto.Enabled = estado;
+            ConsultaTelefonoTexto.Enabled = estado;
+        }
+
+        private void DeshabilitarInputDeTablas()
+        {
+            AbilitarInputDeTexto(false);
+            BotonEditar.Visible = true;
+            BotonCambioCliente.Visible = false;
+        }
+
+        // INPUT EVENTS
+
         private void BotonEditar_Click(object sender, EventArgs e)
         {
+            AbilitarInputDeTexto(true);
+            BotonEditar.Visible = false;
+            BotonCambioCliente.Visible = true;
+        }
 
+        private void BotonCambioCliente_Click(object sender, EventArgs e)
+        {
+            bool opcion = MessageBoxes.ShowYesNoOptionBox($"Aplicar cambios a {cliente.ObtenerUsuario()}?", "Confirmar");
+
+            if (opcion)
+            {
+                CambiarInformacion();
+                informacionActualizada?.Invoke();              
+            }
+
+            DeshabilitarInputDeTablas();
         }
 
         private void BotonRegresar_Click(object sender, EventArgs e)
@@ -52,10 +89,16 @@ namespace ProyectoTienda.Pantallas
             Hide();
         }
 
-
         private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             WindowDragging.ApplyWindowDragging(this);
+        }
+
+        private void ClickFueraDeArea(object sender, EventArgs e)
+        {
+            if (BotonCambioCliente.Visible) return;
+            
+            Hide();           
         }
     }
 }

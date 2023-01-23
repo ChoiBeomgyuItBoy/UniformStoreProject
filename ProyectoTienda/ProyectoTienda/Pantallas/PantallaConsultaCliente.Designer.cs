@@ -29,13 +29,14 @@ namespace ProyectoTienda.Pantallas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.BotonRegresar = new System.Windows.Forms.Button();
             this.ConsultaClienteTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BotonCambioCliente = new System.Windows.Forms.Button();
             this.ConsultaFechaTexto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ConsultaDeudaTexto = new System.Windows.Forms.TextBox();
@@ -102,6 +103,8 @@ namespace ProyectoTienda.Pantallas
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.BotonCambioCliente);
             this.panel2.Controls.Add(this.ConsultaFechaTexto);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.ConsultaDeudaTexto);
@@ -122,6 +125,23 @@ namespace ProyectoTienda.Pantallas
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(967, 499);
             this.panel2.TabIndex = 1;
+            // 
+            // BotonCambioCliente
+            // 
+            this.BotonCambioCliente.AutoSize = true;
+            this.BotonCambioCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            this.BotonCambioCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BotonCambioCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonCambioCliente.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.BotonCambioCliente.ForeColor = System.Drawing.Color.White;
+            this.BotonCambioCliente.Location = new System.Drawing.Point(62, 326);
+            this.BotonCambioCliente.Name = "BotonCambioCliente";
+            this.BotonCambioCliente.Size = new System.Drawing.Size(337, 48);
+            this.BotonCambioCliente.TabIndex = 29;
+            this.BotonCambioCliente.Text = "Actualizar Informacion";
+            this.BotonCambioCliente.UseVisualStyleBackColor = false;
+            this.BotonCambioCliente.Visible = false;
+            this.BotonCambioCliente.Click += new System.EventHandler(this.BotonCambioCliente_Click);
             // 
             // ConsultaFechaTexto
             // 
@@ -186,14 +206,14 @@ namespace ProyectoTienda.Pantallas
             this.ConsultaHijosTabla.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
             this.ConsultaHijosTabla.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ConsultaHijosTabla.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ConsultaHijosTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ConsultaHijosTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ConsultaHijosTabla.ColumnHeadersHeight = 50;
             this.ConsultaHijosTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ConsultaHijosTabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -205,21 +225,21 @@ namespace ProyectoTienda.Pantallas
             this.ConsultaHijosTabla.Name = "ConsultaHijosTabla";
             this.ConsultaHijosTabla.ReadOnly = true;
             this.ConsultaHijosTabla.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ConsultaHijosTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ConsultaHijosTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.ConsultaHijosTabla.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultaHijosTabla.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultaHijosTabla.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.ConsultaHijosTabla.RowTemplate.Height = 40;
             this.ConsultaHijosTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.ConsultaHijosTabla.Size = new System.Drawing.Size(401, 243);
@@ -356,6 +376,9 @@ namespace ProyectoTienda.Pantallas
             ((System.ComponentModel.ISupportInitialize)(this.ConsultaHijosTabla)).EndInit();
             this.ResumeLayout(false);
 
+            // Developer added event (darkrainbowsprinkles)
+            this.Deactivate += new System.EventHandler(this.ClickFueraDeArea);
+
         }
 
         #endregion
@@ -381,5 +404,6 @@ namespace ProyectoTienda.Pantallas
         private System.Windows.Forms.TextBox ConsultaDeudaTexto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button BotonRegresar;
+        private System.Windows.Forms.Button BotonCambioCliente;
     }
 }

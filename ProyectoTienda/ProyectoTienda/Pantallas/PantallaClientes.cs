@@ -1,12 +1,6 @@
 ﻿using ProyectoTienda.Clientes;
+using ProyectoTienda.Utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTienda.Pantallas
@@ -18,13 +12,72 @@ namespace ProyectoTienda.Pantallas
         public PantallaClientes()
         {
             InitializeComponent();
+      
+            PantallaConsultaCliente.informacionActualizada += RefrescarClientes;
         }
 
         private void PantallaClientes_Load(object sender, EventArgs e)
         {
+            Cliente.CrearClientesParaDebug();
             DisplayClientes();
             CrearDepartamentoDropDown();
         }
+
+        // FUNCTIONALITY
+
+        private void CrearDepartamentoDropDown()
+        {
+            DropDownDepartamento.DataSource = Enum.GetValues(typeof(Departamento));
+        }
+
+        private void RefrescarClientes()
+        {
+            ClienteTabla.Rows.Clear();
+            DisplayClientes();
+        }
+
+        private void RefrescarTexto()
+        {
+            UsuarioTexto.Clear();
+            NombreTexto.Clear();
+            TelefonoTexto.Clear();
+            EmailTexto.Clear();
+            NombreHijoTexto.Clear();
+        }
+
+        private void CrearNuevoCliente(string usuario, string nombre, string telefono, string email, string nombreHijo, Departamento departamento)
+        {
+            Hijo hijo = new Hijo(departamento, nombreHijo);
+            Cliente nuevoCliente = new Cliente(usuario, nombre, telefono, email, hijo);
+
+            RefrescarTexto();
+            RefrescarClientes();
+
+            MessageBoxes.ShowSuccessBox("Nuevo cliente creado con exito");
+        }
+
+        private void DisplayClientes()
+        {
+            foreach (Cliente cliente in Cliente.ObtenerClientes())
+            {
+                DisplayCliente(cliente);
+            }
+        }
+
+        private void DisplayCliente(Cliente cliente)
+        {
+            if (cliente == null) return;
+
+            ClienteTabla.Rows.Add
+            (
+               cliente.ObtenerNombre(),
+               cliente.ObtenerUsuario(),
+               cliente.ObtenerEmail(),
+               cliente.ObtenerTelefono()
+            );
+        }
+
+        // INPUT EVENTS
 
         private void BotonNuevoCliente_Click(object sender, EventArgs e)
         {
@@ -37,12 +90,12 @@ namespace ProyectoTienda.Pantallas
 
             if((usuario == "") || (nombre == "") || (telefono == "") || (nombreHijo == ""))
             {
-                MessageBox.Show("Llene los datos correctamente");
+                MessageBoxes.ShowErrorBox("Llene los datos correctamente");
                 return;
             }
             else if(Cliente.UsuarioExistente(usuario))
             {
-                MessageBox.Show("Usuario ya existente");
+                MessageBoxes.ShowErrorBox("Usuario ya existente");
                 return;
             }
 
@@ -79,58 +132,16 @@ namespace ProyectoTienda.Pantallas
             {
                 return;
             }
-            else if(!Cliente.UsuarioExistente(usuarioConsulta))
+            else if(usuarioConsulta != "" && Cliente.UsuarioExistente(usuarioConsulta))
             {
-                MessageBox.Show("Usuario no existente");
+                ClienteTabla.Rows.Clear();
+                Cliente cliente = Cliente.ObtenerConUsuario(usuarioConsulta);
+                DisplayCliente(cliente);
+            }
+            else
+            {
+                MessageBoxes.ShowErrorBox("Usuario no existente");
                 return;
-            }
-
-            ClienteTabla.Rows.Clear();
-            DisplayCliente(usuarioConsulta);
-        }
-        private void CrearDepartamentoDropDown()
-        {
-            DropDownDepartamento.DataSource = Enum.GetValues(typeof(Departamento));
-        }
-
-        private void CrearNuevoCliente(string usuario, string nombre, string telefono, string email, string nombreHijo, Departamento departamento)
-        {
-            Hijo hijo = new Hijo(departamento, nombreHijo);
-            Cliente nuevoCliente = new Cliente(usuario, nombre, telefono, email, hijo);
-
-            UsuarioTexto.Clear();
-            NombreTexto.Clear();
-            TelefonoTexto.Clear();
-            EmailTexto.Clear();
-            NombreHijoTexto.Clear();
-
-            ClienteTabla.Rows.Clear();
-            DisplayClientes();
-
-            MessageBox.Show("Nuevo cliente creado con exito");
-        }
-
-        private void DisplayClientes()
-        {
-            foreach (Cliente cliente in Cliente.ObtenerClientes())
-            {
-                DisplayCliente(cliente.ObtenerUsuario());
-            }
-        }
-
-        private void DisplayCliente(string usuarioConsulta)
-        {
-            Cliente cliente = Cliente.ObtenerConUsuario(usuarioConsulta);
-
-            if(cliente != null)
-            {          
-                ClienteTabla.Rows.Add
-                (
-                    cliente.ObtenerNombre(),
-                    cliente.ObtenerUsuario(),
-                    cliente.ObtenerEmail(),
-                    cliente.ObtenerTelefono()
-                );
             }
         }
     }
