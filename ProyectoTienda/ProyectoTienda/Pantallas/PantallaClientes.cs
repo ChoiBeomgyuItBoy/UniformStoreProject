@@ -23,6 +23,7 @@ namespace ProyectoTienda.Pantallas
         private void PantallaClientes_Load(object sender, EventArgs e)
         {
             DisplayClientes();
+            CrearDepartamentoDropDown();
         }
 
         private void BotonNuevoCliente_Click(object sender, EventArgs e)
@@ -31,9 +32,12 @@ namespace ProyectoTienda.Pantallas
             string nombre = NombreTexto.Text;
             string email = EmailTexto.Text;
             string telefono = TelefonoTexto.Text;
+            string nombreHijo = NombreHijoTexto.Text;
+            Departamento departamento = (Departamento) DropDownDepartamento.SelectedItem;
 
-            if((usuario == "") || (nombre == "") || (email == "") || (telefono == ""))
+            if((usuario == "") || (nombre == "") || (telefono == "") || (nombreHijo == ""))
             {
+                MessageBox.Show("Llene los datos correctamente");
                 return;
             }
             else if(Cliente.UsuarioExistente(usuario))
@@ -42,7 +46,7 @@ namespace ProyectoTienda.Pantallas
                 return;
             }
 
-            CrearNuevoCliente(usuario, nombre, telefono, email);
+            CrearNuevoCliente(usuario, nombre, telefono, email, nombreHijo, departamento);
         }
 
         private void ClienteTabla_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -61,13 +65,9 @@ namespace ProyectoTienda.Pantallas
                 
                 Cliente clienteSeleccionado = Cliente.ObtenerConUsuario(datoCelda);
 
-                MessageBox.Show
-                (
-                    $"Datos de {datoCelda}\n" +
-                    $"Nombre: {clienteSeleccionado.ObtenerNombre()}\n" +
-                    $"Email: {clienteSeleccionado.ObtenerEmail()}\n" +
-                    $"Telefono: {clienteSeleccionado.ObtenerTelefono()}"
-                );
+                PantallaConsultaCliente pantallaConsulta = new PantallaConsultaCliente(clienteSeleccionado);
+
+                pantallaConsulta.Show();
             }        
         }
 
@@ -85,17 +85,24 @@ namespace ProyectoTienda.Pantallas
                 return;
             }
 
+            ClienteTabla.Rows.Clear();
             DisplayCliente(usuarioConsulta);
         }
-
-        private void CrearNuevoCliente(string usuario, string nombre, string telefono, string email)
+        private void CrearDepartamentoDropDown()
         {
-            Cliente nuevoCliente = new Cliente(usuario, nombre, telefono, email);
+            DropDownDepartamento.DataSource = Enum.GetValues(typeof(Departamento));
+        }
+
+        private void CrearNuevoCliente(string usuario, string nombre, string telefono, string email, string nombreHijo, Departamento departamento)
+        {
+            Hijo hijo = new Hijo(departamento, nombreHijo);
+            Cliente nuevoCliente = new Cliente(usuario, nombre, telefono, email, hijo);
 
             UsuarioTexto.Clear();
             NombreTexto.Clear();
             TelefonoTexto.Clear();
             EmailTexto.Clear();
+            NombreHijoTexto.Clear();
 
             ClienteTabla.Rows.Clear();
             DisplayClientes();
@@ -107,15 +114,7 @@ namespace ProyectoTienda.Pantallas
         {
             foreach (Cliente cliente in Cliente.ObtenerClientes())
             {
-                if (cliente == null) continue;
-
-                ClienteTabla.Rows.Add
-                (
-                    cliente.ObtenerNombre(),
-                    cliente.ObtenerUsuario(),
-                    cliente.ObtenerEmail(),
-                    cliente.ObtenerTelefono()
-                );
+                DisplayCliente(cliente.ObtenerUsuario());
             }
         }
 
@@ -124,8 +123,7 @@ namespace ProyectoTienda.Pantallas
             Cliente cliente = Cliente.ObtenerConUsuario(usuarioConsulta);
 
             if(cliente != null)
-            {
-                ClienteTabla.Rows.Clear();
+            {          
                 ClienteTabla.Rows.Add
                 (
                     cliente.ObtenerNombre(),

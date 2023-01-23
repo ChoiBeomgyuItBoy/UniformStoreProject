@@ -37,11 +37,20 @@ namespace ProyectoTienda.Pantallas
             this.label1 = new System.Windows.Forms.Label();
             this.Titulo = new System.Windows.Forms.Label();
             this.PanelAtencionClientes = new System.Windows.Forms.Panel();
+            this.LabelDepartamento = new System.Windows.Forms.Label();
+            this.NombreHijoTexto = new System.Windows.Forms.TextBox();
+            this.DropDownDepartamento = new System.Windows.Forms.ComboBox();
+            this.LabelNombreHijo = new System.Windows.Forms.Label();
+            this.BotonConsulta = new System.Windows.Forms.Button();
             this.ConsultaTexto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.LabelConsultaCliente = new System.Windows.Forms.Label();
             this.LabelNuevoCliente = new System.Windows.Forms.Label();
             this.ClienteTabla = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BotonNuevoCliente = new System.Windows.Forms.Button();
             this.TelefonoLabel = new System.Windows.Forms.Label();
             this.TelefonoTexto = new System.Windows.Forms.TextBox();
@@ -52,11 +61,6 @@ namespace ProyectoTienda.Pantallas
             this.EmailTexto = new System.Windows.Forms.TextBox();
             this.NombreTexto = new System.Windows.Forms.TextBox();
             this.PanelClientes = new System.Windows.Forms.Panel();
-            this.BotonConsulta = new System.Windows.Forms.Button();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gerenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PanelTitulo.SuspendLayout();
             this.PanelAtencionClientes.SuspendLayout();
@@ -97,6 +101,10 @@ namespace ProyectoTienda.Pantallas
             // PanelAtencionClientes
             // 
             this.PanelAtencionClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            this.PanelAtencionClientes.Controls.Add(this.LabelDepartamento);
+            this.PanelAtencionClientes.Controls.Add(this.NombreHijoTexto);
+            this.PanelAtencionClientes.Controls.Add(this.DropDownDepartamento);
+            this.PanelAtencionClientes.Controls.Add(this.LabelNombreHijo);
             this.PanelAtencionClientes.Controls.Add(this.BotonConsulta);
             this.PanelAtencionClientes.Controls.Add(this.ConsultaTexto);
             this.PanelAtencionClientes.Controls.Add(this.label2);
@@ -117,6 +125,65 @@ namespace ProyectoTienda.Pantallas
             this.PanelAtencionClientes.Name = "PanelAtencionClientes";
             this.PanelAtencionClientes.Size = new System.Drawing.Size(1426, 833);
             this.PanelAtencionClientes.TabIndex = 11;
+            // 
+            // LabelDepartamento
+            // 
+            this.LabelDepartamento.AutoSize = true;
+            this.LabelDepartamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            this.LabelDepartamento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelDepartamento.ForeColor = System.Drawing.Color.White;
+            this.LabelDepartamento.Location = new System.Drawing.Point(1004, 656);
+            this.LabelDepartamento.Name = "LabelDepartamento";
+            this.LabelDepartamento.Size = new System.Drawing.Size(154, 22);
+            this.LabelDepartamento.TabIndex = 19;
+            this.LabelDepartamento.Text = "Departamento *";
+            this.LabelDepartamento.UseWaitCursor = true;
+            // 
+            // NombreHijoTexto
+            // 
+            this.NombreHijoTexto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
+            this.NombreHijoTexto.Location = new System.Drawing.Point(1169, 608);
+            this.NombreHijoTexto.Name = "NombreHijoTexto";
+            this.NombreHijoTexto.Size = new System.Drawing.Size(241, 25);
+            this.NombreHijoTexto.TabIndex = 18;
+            // 
+            // DropDownDepartamento
+            // 
+            this.DropDownDepartamento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
+            this.DropDownDepartamento.FormattingEnabled = true;
+            this.DropDownDepartamento.Location = new System.Drawing.Point(1166, 656);
+            this.DropDownDepartamento.Name = "DropDownDepartamento";
+            this.DropDownDepartamento.Size = new System.Drawing.Size(244, 25);
+            this.DropDownDepartamento.TabIndex = 17;
+            // 
+            // LabelNombreHijo
+            // 
+            this.LabelNombreHijo.AutoSize = true;
+            this.LabelNombreHijo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            this.LabelNombreHijo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNombreHijo.ForeColor = System.Drawing.Color.White;
+            this.LabelNombreHijo.Location = new System.Drawing.Point(1022, 611);
+            this.LabelNombreHijo.Name = "LabelNombreHijo";
+            this.LabelNombreHijo.Size = new System.Drawing.Size(136, 22);
+            this.LabelNombreHijo.TabIndex = 16;
+            this.LabelNombreHijo.Text = "Nombre Hijo *";
+            this.LabelNombreHijo.UseWaitCursor = true;
+            // 
+            // BotonConsulta
+            // 
+            this.BotonConsulta.AutoSize = true;
+            this.BotonConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            this.BotonConsulta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BotonConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonConsulta.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.BotonConsulta.ForeColor = System.Drawing.Color.White;
+            this.BotonConsulta.Location = new System.Drawing.Point(1066, 274);
+            this.BotonConsulta.Name = "BotonConsulta";
+            this.BotonConsulta.Size = new System.Drawing.Size(337, 48);
+            this.BotonConsulta.TabIndex = 15;
+            this.BotonConsulta.Text = "Consultar";
+            this.BotonConsulta.UseVisualStyleBackColor = false;
+            this.BotonConsulta.Click += new System.EventHandler(this.BotonConsulta_Click);
             // 
             // ConsultaTexto
             // 
@@ -213,6 +280,34 @@ namespace ProyectoTienda.Pantallas
             this.ClienteTabla.TabIndex = 2;
             this.ClienteTabla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClienteTabla_CellClick);
             // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 200;
+            // 
+            // Usuario
+            // 
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            this.Usuario.Width = 200;
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 200;
+            // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 200;
+            // 
             // BotonNuevoCliente
             // 
             this.BotonNuevoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
@@ -220,7 +315,7 @@ namespace ProyectoTienda.Pantallas
             this.BotonNuevoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonNuevoCliente.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.BotonNuevoCliente.ForeColor = System.Drawing.Color.White;
-            this.BotonNuevoCliente.Location = new System.Drawing.Point(1066, 612);
+            this.BotonNuevoCliente.Location = new System.Drawing.Point(1066, 696);
             this.BotonNuevoCliente.Name = "BotonNuevoCliente";
             this.BotonNuevoCliente.Size = new System.Drawing.Size(337, 48);
             this.BotonNuevoCliente.TabIndex = 1;
@@ -234,11 +329,11 @@ namespace ProyectoTienda.Pantallas
             this.TelefonoLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
             this.TelefonoLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TelefonoLabel.ForeColor = System.Drawing.Color.White;
-            this.TelefonoLabel.Location = new System.Drawing.Point(1047, 562);
+            this.TelefonoLabel.Location = new System.Drawing.Point(1054, 562);
             this.TelefonoLabel.Name = "TelefonoLabel";
-            this.TelefonoLabel.Size = new System.Drawing.Size(88, 22);
+            this.TelefonoLabel.Size = new System.Drawing.Size(101, 22);
             this.TelefonoLabel.TabIndex = 6;
-            this.TelefonoLabel.Text = "Telefono";
+            this.TelefonoLabel.Text = "Telefono *";
             this.TelefonoLabel.UseWaitCursor = true;
             // 
             // TelefonoTexto
@@ -255,7 +350,7 @@ namespace ProyectoTienda.Pantallas
             this.EmailLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
             this.EmailLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailLabel.ForeColor = System.Drawing.Color.White;
-            this.EmailLabel.Location = new System.Drawing.Point(1074, 522);
+            this.EmailLabel.Location = new System.Drawing.Point(1081, 522);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(61, 22);
             this.EmailLabel.TabIndex = 5;
@@ -270,9 +365,9 @@ namespace ProyectoTienda.Pantallas
             this.UsuarioLabel.ForeColor = System.Drawing.Color.White;
             this.UsuarioLabel.Location = new System.Drawing.Point(1065, 429);
             this.UsuarioLabel.Name = "UsuarioLabel";
-            this.UsuarioLabel.Size = new System.Drawing.Size(80, 22);
+            this.UsuarioLabel.Size = new System.Drawing.Size(93, 22);
             this.UsuarioLabel.TabIndex = 3;
-            this.UsuarioLabel.Text = "Usuario";
+            this.UsuarioLabel.Text = "Usuario *";
             // 
             // NombreLabel
             // 
@@ -282,9 +377,9 @@ namespace ProyectoTienda.Pantallas
             this.NombreLabel.ForeColor = System.Drawing.Color.White;
             this.NombreLabel.Location = new System.Drawing.Point(1062, 475);
             this.NombreLabel.Name = "NombreLabel";
-            this.NombreLabel.Size = new System.Drawing.Size(83, 22);
+            this.NombreLabel.Size = new System.Drawing.Size(96, 22);
             this.NombreLabel.TabIndex = 4;
-            this.NombreLabel.Text = "Nombre";
+            this.NombreLabel.Text = "Nombre *";
             // 
             // UsuarioTexto
             // 
@@ -319,50 +414,6 @@ namespace ProyectoTienda.Pantallas
             this.PanelClientes.Name = "PanelClientes";
             this.PanelClientes.Size = new System.Drawing.Size(1426, 833);
             this.PanelClientes.TabIndex = 11;
-            // 
-            // BotonConsulta
-            // 
-            this.BotonConsulta.AutoSize = true;
-            this.BotonConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            this.BotonConsulta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BotonConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BotonConsulta.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
-            this.BotonConsulta.ForeColor = System.Drawing.Color.White;
-            this.BotonConsulta.Location = new System.Drawing.Point(1066, 274);
-            this.BotonConsulta.Name = "BotonConsulta";
-            this.BotonConsulta.Size = new System.Drawing.Size(337, 48);
-            this.BotonConsulta.TabIndex = 15;
-            this.BotonConsulta.Text = "Consultar";
-            this.BotonConsulta.UseVisualStyleBackColor = false;
-            this.BotonConsulta.Click += new System.EventHandler(this.BotonConsulta_Click);
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 200;
-            // 
-            // Usuario
-            // 
-            this.Usuario.HeaderText = "Usuario";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
-            this.Usuario.Width = 200;
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 200;
-            // 
-            // Telefono
-            // 
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 200;
             // 
             // gerenteBindingSource
             // 
@@ -417,5 +468,9 @@ namespace ProyectoTienda.Pantallas
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.Label LabelDepartamento;
+        private System.Windows.Forms.TextBox NombreHijoTexto;
+        private System.Windows.Forms.ComboBox DropDownDepartamento;
+        private System.Windows.Forms.Label LabelNombreHijo;
     }
 }

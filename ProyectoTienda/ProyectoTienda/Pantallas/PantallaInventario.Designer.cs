@@ -32,6 +32,7 @@ namespace ProyectoTienda.Pantallas
             this.PanelTitulo = new System.Windows.Forms.Panel();
             this.ClientesTitulo = new System.Windows.Forms.Label();
             this.Titulo = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.PanelTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@ namespace ProyectoTienda.Pantallas
             this.PanelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTitulo.Location = new System.Drawing.Point(0, 0);
             this.PanelTitulo.Name = "PanelTitulo";
-            this.PanelTitulo.Size = new System.Drawing.Size(804, 70);
+            this.PanelTitulo.Size = new System.Drawing.Size(1353, 70);
             this.PanelTitulo.TabIndex = 1;
             // 
             // ClientesTitulo
@@ -50,7 +51,7 @@ namespace ProyectoTienda.Pantallas
             this.ClientesTitulo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ClientesTitulo.AutoSize = true;
             this.ClientesTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F);
-            this.ClientesTitulo.Location = new System.Drawing.Point(311, 28);
+            this.ClientesTitulo.Location = new System.Drawing.Point(585, 28);
             this.ClientesTitulo.Name = "ClientesTitulo";
             this.ClientesTitulo.Size = new System.Drawing.Size(144, 24);
             this.ClientesTitulo.TabIndex = 1;
@@ -64,11 +65,21 @@ namespace ProyectoTienda.Pantallas
             this.Titulo.Size = new System.Drawing.Size(100, 23);
             this.Titulo.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 70);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1353, 749);
+            this.panel1.TabIndex = 2;
+            // 
             // PantallaInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 537);
+            this.ClientSize = new System.Drawing.Size(1353, 819);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.PanelTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PantallaInventario";
@@ -84,5 +95,6 @@ namespace ProyectoTienda.Pantallas
         private System.Windows.Forms.Panel PanelTitulo;
         private System.Windows.Forms.Label ClientesTitulo;
         private System.Windows.Forms.Label Titulo;
+        private System.Windows.Forms.Panel panel1;
     }
 }
