@@ -38,7 +38,7 @@ namespace ProyectoTienda.Clientes
             CLIENTE_CREACION = DateTime.Now.ToString();
         }
 
-        // STATE PUBLICO DE CLASE
+        // STATE GLOBAL DE CLASE
 
         public static DataTable ObtenerTablaFiltradaDeClientes()
         {

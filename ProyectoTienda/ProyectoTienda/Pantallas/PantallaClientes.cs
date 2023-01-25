@@ -16,14 +16,14 @@ namespace ProyectoTienda.Pantallas
             InitializeComponent();
         }
 
-        // EVENTOS DE VISUALIZACION
+        // INICIALIZACION
 
         private void PantallaClientes_Load(object sender, EventArgs e)
         {
             PantallaConsultaCliente.informacionActualizada += DisplayClientes;
            
             DisplayClientes();
-            CrearDepartamentoDropDown();
+            LlenarDropDownDeDepartamentos();
         }
 
         // UTILIDADES
@@ -35,9 +35,18 @@ namespace ProyectoTienda.Pantallas
             ClienteTabla.DataSource = tablaClientes;
         }
 
-        private void CrearDepartamentoDropDown()
+        private void LlenarDropDownDeDepartamentos()
         {
             DropDownDepartamento.DataSource = Enum.GetValues(typeof(Departamento));
+            DropDownDepartamento.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void FiltrarPorUsuario(string usuario)
+        {
+            var datoFiltrado = Cliente.ObtenerTablaFiltradaDeClientes().AsEnumerable()
+                               .Where(row => row.Field<string>(Cliente.ObtenerColumnaLlave()) == usuario);
+
+            ClienteTabla.DataSource = datoFiltrado.AsDataView();
         }
 
         // EVENTOS DE INPUT
@@ -52,11 +61,17 @@ namespace ProyectoTienda.Pantallas
             if (ValidadorCliente.ValidarInsercion(usuario, nombre, email, telefono))
             {
                 Cliente nuevoCliente = new Cliente(usuario, nombre, email, telefono);
-                nuevoCliente.AplicarInsercion();
 
-                Utils.MessageBoxes.ShowSuccessBox("Cliente creado con exito");
+                if (nuevoCliente != null && nuevoCliente.AplicarInsercion())
+                {
+                    MessageBoxes.ShowSuccessBox("Cliente creado con exito");
 
-                DisplayClientes();
+                    DisplayClientes();
+                }
+                else
+                {
+                    MessageBoxes.ShowErrorBox("Error al crear cliente");
+                }
             }
         }
 
@@ -80,16 +95,6 @@ namespace ProyectoTienda.Pantallas
 
                 pantallaConsulta.Show();
             }        
-        }
-
-        // REFACTOR LATER
-
-        private void FiltrarPorUsuario(string usuario)
-        {
-            var datoFiltrado = Cliente.ObtenerTablaFiltradaDeClientes().AsEnumerable()
-                               .Where(row => row.Field<string>(Cliente.ObtenerColumnaLlave()) == usuario);
-
-            ClienteTabla.DataSource = datoFiltrado.AsDataView();
         }
 
         private void BotonConsulta_Click(object sender, EventArgs e)

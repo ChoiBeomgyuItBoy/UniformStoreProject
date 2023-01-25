@@ -79,6 +79,16 @@ namespace Darkrainbowsprinkles.OracleAccess
                                     var val = reader.IsDBNull(i) ? null : (long?)Convert.ToInt64(reader.GetValue(i));
                                     prop.SetValue(item, val);
                                 }
+                                else if (prop.PropertyType.IsEnum)
+                                {
+                                    var val = reader.IsDBNull(i) ? null : Enum.Parse(prop.PropertyType, reader.GetString(i));
+                                    prop.SetValue(item, val);
+                                }
+                                else if (prop.PropertyType == typeof(Single) || prop.PropertyType == typeof(Single?))
+                                {
+                                    var val = reader.IsDBNull(i) ? null : (Single?)Convert.ToSingle(reader.GetValue(i));
+                                    prop.SetValue(item, val);
+                                }
                                 else
                                 {
                                     var val = reader.IsDBNull(i) ? null : reader.GetValue(i);

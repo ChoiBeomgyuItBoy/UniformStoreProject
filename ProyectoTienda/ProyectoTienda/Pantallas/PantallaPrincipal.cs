@@ -10,6 +10,7 @@ namespace ProyectoTienda.Pantallas
         public PantallaPrincipal()
         {
             InitializeComponent();
+
             Gerente.CrearGerentesIniciales();
 
             WindowState = FormWindowState.Maximized;

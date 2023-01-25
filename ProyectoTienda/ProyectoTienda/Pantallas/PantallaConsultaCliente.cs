@@ -21,7 +21,7 @@ namespace ProyectoTienda.Pantallas
             AbilitarInputDeTexto(false);
         }
 
-        // FUNCTIONALITY
+        // UTILIDADES
 
         private void DisplayCliente()
         {
@@ -90,6 +90,7 @@ namespace ProyectoTienda.Pantallas
                     cliente.CLIENTE_TELEFONO = telefono;
                     cliente.AplicarModificaciones();
                     informacionActualizada?.Invoke();
+                    MessageBoxes.ShowSuccessBox("Cliente modificado con exito");
                 }
 
                 DeshabilitarInputDeTablas();

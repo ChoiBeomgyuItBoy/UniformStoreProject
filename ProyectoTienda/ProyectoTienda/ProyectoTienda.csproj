@@ -55,6 +55,8 @@
     <Compile Include="DataBase\IDataInserter.cs" />
     <Compile Include="DataBase\IDataModifier.cs" />
     <Compile Include="Gerentes\Gerente.cs" />
+    <Compile Include="Inventario\ProductoCategoria.cs" />
+    <Compile Include="Inventario\ValidadorProducto.cs" />
     <Compile Include="Pantallas\PantallaCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +68,12 @@
     </Compile>
     <Compile Include="Pantallas\PantallaConsultaCliente.Designer.cs">
       <DependentUpon>PantallaConsultaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\PantallaConsultaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\PantallaConsultaProducto.Designer.cs">
+      <DependentUpon>PantallaConsultaProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\PantallaInventario.cs">
       <SubType>Form</SubType>
@@ -97,6 +105,7 @@
     <Compile Include="Pantallas\PantallaVentas.Designer.cs">
       <DependentUpon>PantallaVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventario\Producto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MessageBoxes.cs" />
@@ -109,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\PantallaConsultaCliente.resx">
       <DependentUpon>PantallaConsultaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\PantallaConsultaProducto.resx">
+      <DependentUpon>PantallaConsultaProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\PantallaInventario.resx">
       <DependentUpon>PantallaInventario.cs</DependentUpon>

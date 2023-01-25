@@ -29,13 +29,14 @@ namespace ProyectoTienda.Pantallas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.BotonRegresar = new System.Windows.Forms.Button();
             this.ConsultaClienteTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BotonEliminarCliente = new System.Windows.Forms.Button();
             this.BotonCambioCliente = new System.Windows.Forms.Button();
             this.ConsultaFechaTexto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@ namespace ProyectoTienda.Pantallas
             this.label1 = new System.Windows.Forms.Label();
             this.ConsultaUsuarioTexto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.BotonEliminarCliente = new System.Windows.Forms.Button();
             this.BarraTitulo.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultaHijosTabla)).BeginInit();
@@ -127,6 +127,22 @@ namespace ProyectoTienda.Pantallas
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(967, 499);
             this.panel2.TabIndex = 1;
+            // 
+            // BotonEliminarCliente
+            // 
+            this.BotonEliminarCliente.AutoSize = true;
+            this.BotonEliminarCliente.BackColor = System.Drawing.Color.Red;
+            this.BotonEliminarCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BotonEliminarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonEliminarCliente.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.BotonEliminarCliente.ForeColor = System.Drawing.Color.White;
+            this.BotonEliminarCliente.Location = new System.Drawing.Point(768, 437);
+            this.BotonEliminarCliente.Name = "BotonEliminarCliente";
+            this.BotonEliminarCliente.Size = new System.Drawing.Size(185, 48);
+            this.BotonEliminarCliente.TabIndex = 30;
+            this.BotonEliminarCliente.Text = "Eliminar Cliente";
+            this.BotonEliminarCliente.UseVisualStyleBackColor = false;
+            this.BotonEliminarCliente.Click += new System.EventHandler(this.BotonEliminarCliente_Click);
             // 
             // BotonCambioCliente
             // 
@@ -208,14 +224,14 @@ namespace ProyectoTienda.Pantallas
             this.ConsultaHijosTabla.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
             this.ConsultaHijosTabla.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ConsultaHijosTabla.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ConsultaHijosTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ConsultaHijosTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.ConsultaHijosTabla.ColumnHeadersHeight = 50;
             this.ConsultaHijosTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ConsultaHijosTabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -227,21 +243,21 @@ namespace ProyectoTienda.Pantallas
             this.ConsultaHijosTabla.Name = "ConsultaHijosTabla";
             this.ConsultaHijosTabla.ReadOnly = true;
             this.ConsultaHijosTabla.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ConsultaHijosTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ConsultaHijosTabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.ConsultaHijosTabla.RowHeadersVisible = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultaHijosTabla.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultaHijosTabla.RowsDefaultCellStyle = dataGridViewCellStyle27;
             this.ConsultaHijosTabla.RowTemplate.Height = 40;
             this.ConsultaHijosTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.ConsultaHijosTabla.Size = new System.Drawing.Size(401, 243);
@@ -360,22 +376,6 @@ namespace ProyectoTienda.Pantallas
             this.label2.Size = new System.Drawing.Size(80, 22);
             this.label2.TabIndex = 14;
             this.label2.Text = "Usuario";
-            // 
-            // BotonEliminarCliente
-            // 
-            this.BotonEliminarCliente.AutoSize = true;
-            this.BotonEliminarCliente.BackColor = System.Drawing.Color.Red;
-            this.BotonEliminarCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BotonEliminarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BotonEliminarCliente.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
-            this.BotonEliminarCliente.ForeColor = System.Drawing.Color.White;
-            this.BotonEliminarCliente.Location = new System.Drawing.Point(768, 437);
-            this.BotonEliminarCliente.Name = "BotonEliminarCliente";
-            this.BotonEliminarCliente.Size = new System.Drawing.Size(185, 48);
-            this.BotonEliminarCliente.TabIndex = 30;
-            this.BotonEliminarCliente.Text = "Eliminar Cliente";
-            this.BotonEliminarCliente.UseVisualStyleBackColor = false;
-            this.BotonEliminarCliente.Click += new System.EventHandler(this.BotonEliminarCliente_Click);
             // 
             // PantallaConsultaCliente
             // 
