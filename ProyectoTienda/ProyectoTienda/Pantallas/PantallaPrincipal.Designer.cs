@@ -36,21 +36,27 @@ namespace ProyectoTienda.Pantallas
             this.BotonMinimizar = new System.Windows.Forms.PictureBox();
             this.BotonCerrar = new System.Windows.Forms.PictureBox();
             this.PanelMenu = new System.Windows.Forms.Panel();
-            this.BotonInventario = new System.Windows.Forms.Button();
-            this.BotonColorPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.BotonClientes = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.BotonCompra = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.BotonVentas = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.BotonCompra = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.BotonClientes = new System.Windows.Forms.Button();
+            this.BotonColorPanel = new System.Windows.Forms.Panel();
+            this.BotonInventario = new System.Windows.Forms.Button();
             this.PanelContenedor = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BotonRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BotonMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BotonMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BotonCerrar)).BeginInit();
             this.PanelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.PanelContenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTitulo
@@ -123,6 +129,8 @@ namespace ProyectoTienda.Pantallas
             // PanelMenu
             // 
             this.PanelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.PanelMenu.Controls.Add(this.label1);
+            this.PanelMenu.Controls.Add(this.pictureBox2);
             this.PanelMenu.Controls.Add(this.panel3);
             this.PanelMenu.Controls.Add(this.BotonVentas);
             this.PanelMenu.Controls.Add(this.panel2);
@@ -137,83 +145,27 @@ namespace ProyectoTienda.Pantallas
             this.PanelMenu.Size = new System.Drawing.Size(228, 699);
             this.PanelMenu.TabIndex = 1;
             // 
-            // BotonInventario
+            // label1
             // 
-            this.BotonInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.BotonInventario.FlatAppearance.BorderSize = 0;
-            this.BotonInventario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.BotonInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BotonInventario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonInventario.ForeColor = System.Drawing.Color.White;
-            this.BotonInventario.Image = ((System.Drawing.Image)(resources.GetObject("BotonInventario.Image")));
-            this.BotonInventario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BotonInventario.Location = new System.Drawing.Point(9, 282);
-            this.BotonInventario.Name = "BotonInventario";
-            this.BotonInventario.Size = new System.Drawing.Size(219, 31);
-            this.BotonInventario.TabIndex = 0;
-            this.BotonInventario.Text = "Inventario";
-            this.BotonInventario.UseVisualStyleBackColor = false;
-            this.BotonInventario.Click += new System.EventHandler(this.BotonInventario_Click);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(12, 202);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 20);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "UNIFORMES ISHIKAWA";
             // 
-            // BotonColorPanel
+            // pictureBox2
             // 
-            this.BotonColorPanel.BackColor = System.Drawing.Color.RoyalBlue;
-            this.BotonColorPanel.Location = new System.Drawing.Point(0, 282);
-            this.BotonColorPanel.Name = "BotonColorPanel";
-            this.BotonColorPanel.Size = new System.Drawing.Size(11, 31);
-            this.BotonColorPanel.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel1.Location = new System.Drawing.Point(0, 338);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(11, 31);
-            this.panel1.TabIndex = 4;
-            // 
-            // BotonClientes
-            // 
-            this.BotonClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.BotonClientes.FlatAppearance.BorderSize = 0;
-            this.BotonClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.BotonClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BotonClientes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonClientes.ForeColor = System.Drawing.Color.White;
-            this.BotonClientes.Image = ((System.Drawing.Image)(resources.GetObject("BotonClientes.Image")));
-            this.BotonClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BotonClientes.Location = new System.Drawing.Point(9, 338);
-            this.BotonClientes.Name = "BotonClientes";
-            this.BotonClientes.Size = new System.Drawing.Size(216, 31);
-            this.BotonClientes.TabIndex = 3;
-            this.BotonClientes.Text = "Clientes";
-            this.BotonClientes.UseVisualStyleBackColor = false;
-            this.BotonClientes.Click += new System.EventHandler(this.BotonClientes_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel2.Location = new System.Drawing.Point(0, 402);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(11, 31);
-            this.panel2.TabIndex = 6;
-            // 
-            // BotonCompra
-            // 
-            this.BotonCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.BotonCompra.FlatAppearance.BorderSize = 0;
-            this.BotonCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.BotonCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BotonCompra.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonCompra.ForeColor = System.Drawing.Color.White;
-            this.BotonCompra.Image = ((System.Drawing.Image)(resources.GetObject("BotonCompra.Image")));
-            this.BotonCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BotonCompra.Location = new System.Drawing.Point(9, 402);
-            this.BotonCompra.Name = "BotonCompra";
-            this.BotonCompra.Size = new System.Drawing.Size(216, 31);
-            this.BotonCompra.TabIndex = 5;
-            this.BotonCompra.Text = "Compra";
-            this.BotonCompra.UseVisualStyleBackColor = false;
-            this.BotonCompra.Click += new System.EventHandler(this.BotonCompra_Click);
+            this.pictureBox2.Image = global::ProyectoTienda.Properties.Resources.logo_blanco;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 16);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(190, 183);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
             // panel3
             // 
@@ -241,13 +193,104 @@ namespace ProyectoTienda.Pantallas
             this.BotonVentas.UseVisualStyleBackColor = false;
             this.BotonVentas.Click += new System.EventHandler(this.BotonVentas_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel2.Location = new System.Drawing.Point(0, 402);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(11, 31);
+            this.panel2.TabIndex = 6;
+            // 
+            // BotonCompra
+            // 
+            this.BotonCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.BotonCompra.FlatAppearance.BorderSize = 0;
+            this.BotonCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.BotonCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonCompra.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonCompra.ForeColor = System.Drawing.Color.White;
+            this.BotonCompra.Image = ((System.Drawing.Image)(resources.GetObject("BotonCompra.Image")));
+            this.BotonCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BotonCompra.Location = new System.Drawing.Point(9, 402);
+            this.BotonCompra.Name = "BotonCompra";
+            this.BotonCompra.Size = new System.Drawing.Size(216, 31);
+            this.BotonCompra.TabIndex = 5;
+            this.BotonCompra.Text = "Compra";
+            this.BotonCompra.UseVisualStyleBackColor = false;
+            this.BotonCompra.Click += new System.EventHandler(this.BotonCompra_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.Location = new System.Drawing.Point(0, 338);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(11, 31);
+            this.panel1.TabIndex = 4;
+            // 
+            // BotonClientes
+            // 
+            this.BotonClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.BotonClientes.FlatAppearance.BorderSize = 0;
+            this.BotonClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.BotonClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonClientes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonClientes.ForeColor = System.Drawing.Color.White;
+            this.BotonClientes.Image = ((System.Drawing.Image)(resources.GetObject("BotonClientes.Image")));
+            this.BotonClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BotonClientes.Location = new System.Drawing.Point(9, 338);
+            this.BotonClientes.Name = "BotonClientes";
+            this.BotonClientes.Size = new System.Drawing.Size(216, 31);
+            this.BotonClientes.TabIndex = 3;
+            this.BotonClientes.Text = "Clientes";
+            this.BotonClientes.UseVisualStyleBackColor = false;
+            this.BotonClientes.Click += new System.EventHandler(this.BotonClientes_Click);
+            // 
+            // BotonColorPanel
+            // 
+            this.BotonColorPanel.BackColor = System.Drawing.Color.RoyalBlue;
+            this.BotonColorPanel.Location = new System.Drawing.Point(0, 282);
+            this.BotonColorPanel.Name = "BotonColorPanel";
+            this.BotonColorPanel.Size = new System.Drawing.Size(11, 31);
+            this.BotonColorPanel.TabIndex = 2;
+            // 
+            // BotonInventario
+            // 
+            this.BotonInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.BotonInventario.FlatAppearance.BorderSize = 0;
+            this.BotonInventario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.BotonInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonInventario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonInventario.ForeColor = System.Drawing.Color.White;
+            this.BotonInventario.Image = ((System.Drawing.Image)(resources.GetObject("BotonInventario.Image")));
+            this.BotonInventario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BotonInventario.Location = new System.Drawing.Point(9, 282);
+            this.BotonInventario.Name = "BotonInventario";
+            this.BotonInventario.Size = new System.Drawing.Size(219, 31);
+            this.BotonInventario.TabIndex = 0;
+            this.BotonInventario.Text = "Inventario";
+            this.BotonInventario.UseVisualStyleBackColor = false;
+            this.BotonInventario.Click += new System.EventHandler(this.BotonInventario_Click);
+            // 
             // PanelContenedor
             // 
+            this.PanelContenedor.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.PanelContenedor.Controls.Add(this.pictureBox1);
             this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContenedor.Location = new System.Drawing.Point(228, 45);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Size = new System.Drawing.Size(1041, 699);
             this.PanelContenedor.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::ProyectoTienda.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1041, 699);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // PantallaPrincipal
             // 
@@ -266,6 +309,10 @@ namespace ProyectoTienda.Pantallas
             ((System.ComponentModel.ISupportInitialize)(this.BotonMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BotonCerrar)).EndInit();
             this.PanelMenu.ResumeLayout(false);
+            this.PanelMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.PanelContenedor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -287,5 +334,8 @@ namespace ProyectoTienda.Pantallas
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button BotonVentas;
         private System.Windows.Forms.Panel PanelContenedor;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
     }
 }

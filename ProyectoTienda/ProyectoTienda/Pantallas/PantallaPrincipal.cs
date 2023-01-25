@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using ProyectoTienda.Gerentes;
 using ProyectoTienda.Utils;
 
 namespace ProyectoTienda.Pantallas
@@ -10,8 +9,6 @@ namespace ProyectoTienda.Pantallas
         public PantallaPrincipal()
         {
             InitializeComponent();
-
-            Gerente.CrearGerentesIniciales();
 
             WindowState = FormWindowState.Maximized;
         }

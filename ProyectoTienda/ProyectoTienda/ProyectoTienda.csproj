@@ -54,7 +54,7 @@
     <Compile Include="DataBase\DataBaseManager.cs" />
     <Compile Include="DataBase\IDataInserter.cs" />
     <Compile Include="DataBase\IDataModifier.cs" />
-    <Compile Include="Gerentes\Gerente.cs" />
+    <Compile Include="Usuarios\Usuario.cs" />
     <Compile Include="Inventario\ProductoCategoria.cs" />
     <Compile Include="Inventario\ValidadorProducto.cs" />
     <Compile Include="Pantallas\PantallaCompra.cs">
@@ -156,6 +156,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo blanco.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

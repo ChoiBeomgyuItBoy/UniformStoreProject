@@ -1,6 +1,7 @@
-﻿using System;
+﻿using ProyectoTienda.Usuarios;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
-using ProyectoTienda.Gerentes;
 
 namespace ProyectoTienda.Pantallas
 {
@@ -9,32 +10,56 @@ namespace ProyectoTienda.Pantallas
         public PantallaLogin()
         {
             InitializeComponent();
+            AjustarAlfaDeImagen();
         }
 
-        private void UsuarioInput_TextChanged(object sender, EventArgs e) { }
+        // UTILIDADES
 
-        private void ContraseñaInput_TextChanged(object sender, EventArgs e) { }
-
-        private void BotonAcceso_Click(object sender, EventArgs e)
+        private void AjustarAlfaDeImagen()
         {
-            string usuario = UsuarioInput.Text;
-            string claveAcceso = ContraseñaInput.Text;
-
-            if(!Gerente.ExisteGerente(usuario))
-            {
-                MessageBox.Show("Usuario o contraseña invalidos");
-            }
-            else
-            {
-                Hide();
-                PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
-                pantallaPrincipal.Show();
-            }
+            Logo.BackColor = Color.FromArgb(127, Logo.BackColor);
         }
+
+        private void Accesar()
+        {
+            Hide();
+            PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
+            pantallaPrincipal.Show();
+        }
+
+        // EVENTOS DE INPUT
 
         private void BotonSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BotonAcceso_Click(object sender, EventArgs e)
+        {
+            string ID = IDTexto.Text;
+            string clave = ClaveTexto.Text;
+
+            if (ID == "" || clave == "") return;
+
+            if(Usuario.ChecarIDExistente(ID))
+            {
+                Usuario usuario = Usuario.ObtenerNuevoConID(ID);
+
+                if(usuario != null && usuario.USUARIO_CLAVE == clave)
+                {
+                    Utils.MessageBoxes.ShowSuccessBox("Acceso Garantizado");
+                    Accesar();
+                }
+            }
+            else
+            {
+                Utils.MessageBoxes.ShowErrorBox("Clave o Usuario incorrectos");
+            }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Utils.WindowDragging.ApplyWindowDragging(this);
         }
     }
 }
