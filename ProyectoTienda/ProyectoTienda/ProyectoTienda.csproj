@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +50,10 @@
     <Compile Include="Clientes\Cliente.cs" />
     <Compile Include="Clientes\Departamento.cs" />
     <Compile Include="Clientes\Hijo.cs" />
+    <Compile Include="Clientes\ValidadorCliente.cs" />
+    <Compile Include="DataBase\DataBaseManager.cs" />
+    <Compile Include="DataBase\IDataInserter.cs" />
+    <Compile Include="DataBase\IDataModifier.cs" />
     <Compile Include="Gerentes\Gerente.cs" />
     <Compile Include="Pantallas\PantallaCompra.cs">
       <SubType>Form</SubType>

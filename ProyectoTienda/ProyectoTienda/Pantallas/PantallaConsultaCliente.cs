@@ -25,27 +25,24 @@ namespace ProyectoTienda.Pantallas
 
         private void DisplayCliente()
         {
-            ConsultaUsuarioTexto.Text = cliente.ObtenerUsuario();
-            ConsultaNombreTexto.Text = cliente.ObtenerNombre();
-            ConsultaEmailTexto.Text = cliente.ObtenerEmail();
-            ConsultaTelefonoTexto.Text = cliente.ObtenerTelefono();
-            ConsultaDeudaTexto.Text = cliente.ObtenerDeuda().ToString();
-            ConsultaFechaTexto.Text = cliente.ObtenerFechaCreacion();
+            ConsultaUsuarioTexto.Text = cliente.CLIENTE_USUARIO;
+            ConsultaNombreTexto.Text = cliente.CLIENTE_NOMBRE;
+            ConsultaEmailTexto.Text = cliente.CLIENTE_EMAIL;
+            ConsultaTelefonoTexto.Text = cliente.CLIENTE_TELEFONO;
+            ConsultaDeudaTexto.Text = cliente.CLIENTE_DEUDA.ToString();
+            ConsultaFechaTexto.Text = cliente.CLIENTE_CREACION;
         }
 
         private void DisplayHijos()
         {
-            foreach(Hijo hijo in cliente.ObtenerHijos())
-            {
-                ConsultaHijosTabla.Rows.Add(hijo.nombre, hijo.departamento.ToString());
-            }
+            // TODO
         }
 
         private void CambiarInformacion()
         {
-            cliente.CambiarNombre(ConsultaNombreTexto.Text);
-            cliente.CambiarEmail(ConsultaEmailTexto.Text);
-            cliente.CambiarTelefono(ConsultaTelefonoTexto.Text);
+            cliente.CLIENTE_NOMBRE = ConsultaNombreTexto.Text;
+            cliente.CLIENTE_EMAIL = ConsultaEmailTexto.Text;
+            cliente.CLIENTE_TELEFONO = ConsultaTelefonoTexto.Text;
         }
 
         private void AbilitarInputDeTexto(bool estado)
@@ -62,7 +59,12 @@ namespace ProyectoTienda.Pantallas
             BotonCambioCliente.Visible = false;
         }
 
-        // INPUT EVENTS
+        // EVENTOS DE INPUT
+
+        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            WindowDragging.ApplyWindowDragging(this);
+        }
 
         private void BotonEditar_Click(object sender, EventArgs e)
         {
@@ -73,32 +75,55 @@ namespace ProyectoTienda.Pantallas
 
         private void BotonCambioCliente_Click(object sender, EventArgs e)
         {
-            bool opcion = MessageBoxes.ShowYesNoOptionBox($"Aplicar cambios a {cliente.ObtenerUsuario()}?", "Confirmar");
+            string nombre = ConsultaNombreTexto.Text;
+            string email = ConsultaEmailTexto.Text;
+            string telefono = ConsultaTelefonoTexto.Text;
 
-            if (opcion)
+            if (ValidadorCliente.ValidarModificacion(nombre, email, telefono))
             {
-                CambiarInformacion();
-                informacionActualizada?.Invoke();              
-            }
+                bool opcion = MessageBoxes.ShowYesNoOptionBox($"Aplicar cambios a {cliente.CLIENTE_USUARIO}?", "Confirmar");
 
-            DeshabilitarInputDeTablas();
+                if (opcion)
+                {
+                    cliente.CLIENTE_NOMBRE = nombre;
+                    cliente.CLIENTE_EMAIL = email;
+                    cliente.CLIENTE_TELEFONO = telefono;
+                    cliente.AplicarModificaciones();
+                    informacionActualizada?.Invoke();
+                }
+
+                DeshabilitarInputDeTablas();
+            } 
+        }
+
+        private void BotonEliminarCliente_Click(object sender, EventArgs e)
+        {
+            bool opcion = MessageBoxes.ShowYesNoOptionBox($"Eliminar a {cliente.CLIENTE_USUARIO}?", "Confirmar");
+
+            if(opcion)
+            {
+                if (!cliente.RemoverEsteCliente())
+                {
+                    MessageBoxes.ShowErrorBox("Error al eliminar cliente");
+                    return;
+                }
+
+                informacionActualizada?.Invoke();
+                MessageBoxes.ShowSuccessBox("Cliente eliminado con exito");
+                Close();
+            }       
         }
 
         private void BotonRegresar_Click(object sender, EventArgs e)
         {
-            Hide();
-        }
-
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            WindowDragging.ApplyWindowDragging(this);
+            Close();
         }
 
         private void ClickFueraDeArea(object sender, EventArgs e)
         {
-            if (BotonCambioCliente.Visible) return;
-            
-            Hide();           
+            if (BotonCambioCliente.Visible || BotonEliminarCliente.Visible) return;
+
+            Close();           
         }
     }
 }

@@ -47,10 +47,6 @@ namespace ProyectoTienda.Pantallas
             this.LabelConsultaCliente = new System.Windows.Forms.Label();
             this.LabelNuevoCliente = new System.Windows.Forms.Label();
             this.ClienteTabla = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BotonNuevoCliente = new System.Windows.Forms.Button();
             this.TelefonoLabel = new System.Windows.Forms.Label();
             this.TelefonoTexto = new System.Windows.Forms.TextBox();
@@ -235,6 +231,7 @@ namespace ProyectoTienda.Pantallas
             this.ClienteTabla.AllowUserToDeleteRows = false;
             this.ClienteTabla.AllowUserToResizeColumns = false;
             this.ClienteTabla.AllowUserToResizeRows = false;
+            this.ClienteTabla.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ClienteTabla.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.ClienteTabla.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ClienteTabla.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -248,14 +245,9 @@ namespace ProyectoTienda.Pantallas
             this.ClienteTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ClienteTabla.ColumnHeadersHeight = 50;
             this.ClienteTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.ClienteTabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre,
-            this.Usuario,
-            this.Email,
-            this.Telefono});
             this.ClienteTabla.EnableHeadersVisualStyles = false;
             this.ClienteTabla.GridColor = System.Drawing.Color.SteelBlue;
-            this.ClienteTabla.Location = new System.Drawing.Point(29, 123);
+            this.ClienteTabla.Location = new System.Drawing.Point(159, 189);
             this.ClienteTabla.Name = "ClienteTabla";
             this.ClienteTabla.ReadOnly = true;
             this.ClienteTabla.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -276,37 +268,9 @@ namespace ProyectoTienda.Pantallas
             this.ClienteTabla.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.ClienteTabla.RowTemplate.Height = 40;
             this.ClienteTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.ClienteTabla.Size = new System.Drawing.Size(801, 662);
+            this.ClienteTabla.Size = new System.Drawing.Size(610, 662);
             this.ClienteTabla.TabIndex = 2;
             this.ClienteTabla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClienteTabla_CellClick);
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 200;
-            // 
-            // Usuario
-            // 
-            this.Usuario.HeaderText = "Usuario";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
-            this.Usuario.Width = 200;
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 200;
-            // 
-            // Telefono
-            // 
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 200;
             // 
             // BotonNuevoCliente
             // 
@@ -415,10 +379,6 @@ namespace ProyectoTienda.Pantallas
             this.PanelClientes.Size = new System.Drawing.Size(1426, 833);
             this.PanelClientes.TabIndex = 11;
             // 
-            // gerenteBindingSource
-            // 
-            this.gerenteBindingSource.DataSource = typeof(ProyectoTienda.Gerentes.Gerente);
-            // 
             // PantallaClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,10 +424,6 @@ namespace ProyectoTienda.Pantallas
         private System.Windows.Forms.Label LabelConsultaCliente;
         private System.Windows.Forms.Label LabelNuevoCliente;
         private System.Windows.Forms.Button BotonConsulta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.Label LabelDepartamento;
         private System.Windows.Forms.TextBox NombreHijoTexto;
         private System.Windows.Forms.ComboBox DropDownDepartamento;

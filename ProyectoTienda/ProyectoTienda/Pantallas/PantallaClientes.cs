@@ -1,83 +1,46 @@
 ﻿using ProyectoTienda.Clientes;
 using ProyectoTienda.Utils;
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace ProyectoTienda.Pantallas
 {
     public partial class PantallaClientes : Form
     {
-        private const int indexColumnaUsuarios = 1;
+        private const int indexColumnaUsuarios = 0;
 
         public PantallaClientes()
         {
             InitializeComponent();
-      
-            PantallaConsultaCliente.informacionActualizada += RefrescarClientes;
         }
+
+        // EVENTOS DE VISUALIZACION
 
         private void PantallaClientes_Load(object sender, EventArgs e)
         {
-            Cliente.CrearClientesParaDebug();
+            PantallaConsultaCliente.informacionActualizada += DisplayClientes;
+           
             DisplayClientes();
             CrearDepartamentoDropDown();
         }
 
-        // FUNCTIONALITY
+        // UTILIDADES
+
+        private void DisplayClientes()
+        {
+            DataTable tablaClientes = Cliente.ObtenerTablaFiltradaDeClientes();
+
+            ClienteTabla.DataSource = tablaClientes;
+        }
 
         private void CrearDepartamentoDropDown()
         {
             DropDownDepartamento.DataSource = Enum.GetValues(typeof(Departamento));
         }
 
-        private void RefrescarClientes()
-        {
-            ClienteTabla.Rows.Clear();
-            DisplayClientes();
-        }
-
-        private void RefrescarTexto()
-        {
-            UsuarioTexto.Clear();
-            NombreTexto.Clear();
-            TelefonoTexto.Clear();
-            EmailTexto.Clear();
-            NombreHijoTexto.Clear();
-        }
-
-        private void CrearNuevoCliente(string usuario, string nombre, string telefono, string email, string nombreHijo, Departamento departamento)
-        {
-            Hijo hijo = new Hijo(departamento, nombreHijo);
-            Cliente nuevoCliente = new Cliente(usuario, nombre, telefono, email, hijo);
-
-            RefrescarTexto();
-            RefrescarClientes();
-
-            MessageBoxes.ShowSuccessBox("Nuevo cliente creado con exito");
-        }
-
-        private void DisplayClientes()
-        {
-            foreach (Cliente cliente in Cliente.ObtenerClientes())
-            {
-                DisplayCliente(cliente);
-            }
-        }
-
-        private void DisplayCliente(Cliente cliente)
-        {
-            if (cliente == null) return;
-
-            ClienteTabla.Rows.Add
-            (
-               cliente.ObtenerNombre(),
-               cliente.ObtenerUsuario(),
-               cliente.ObtenerEmail(),
-               cliente.ObtenerTelefono()
-            );
-        }
-
-        // INPUT EVENTS
+        // EVENTOS DE INPUT
 
         private void BotonNuevoCliente_Click(object sender, EventArgs e)
         {
@@ -85,21 +48,16 @@ namespace ProyectoTienda.Pantallas
             string nombre = NombreTexto.Text;
             string email = EmailTexto.Text;
             string telefono = TelefonoTexto.Text;
-            string nombreHijo = NombreHijoTexto.Text;
-            Departamento departamento = (Departamento) DropDownDepartamento.SelectedItem;
 
-            if((usuario == "") || (nombre == "") || (telefono == "") || (nombreHijo == ""))
+            if (ValidadorCliente.ValidarInsercion(usuario, nombre, email, telefono))
             {
-                MessageBoxes.ShowErrorBox("Llene los datos correctamente");
-                return;
-            }
-            else if(Cliente.UsuarioExistente(usuario))
-            {
-                MessageBoxes.ShowErrorBox("Usuario ya existente");
-                return;
-            }
+                Cliente nuevoCliente = new Cliente(usuario, nombre, email, telefono);
+                nuevoCliente.AplicarInsercion();
 
-            CrearNuevoCliente(usuario, nombre, telefono, email, nombreHijo, departamento);
+                Utils.MessageBoxes.ShowSuccessBox("Cliente creado con exito");
+
+                DisplayClientes();
+            }
         }
 
         private void ClienteTabla_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -112,11 +70,11 @@ namespace ProyectoTienda.Pantallas
 
                 string datoCelda = celdaSeleccionada.Value.ToString();
 
-                if (celdaSeleccionada.ColumnIndex != indexColumnaUsuarios) return;
-
-                if (!Cliente.UsuarioExistente(datoCelda)) return;
+                if (celdaSeleccionada.ColumnIndex != indexColumnaUsuarios) return;               
                 
-                Cliente clienteSeleccionado = Cliente.ObtenerConUsuario(datoCelda);
+                Cliente clienteSeleccionado = Cliente.ObtenerNuevoConUsuario(datoCelda);
+
+                if (clienteSeleccionado == null) return;
 
                 PantallaConsultaCliente pantallaConsulta = new PantallaConsultaCliente(clienteSeleccionado);
 
@@ -124,25 +82,29 @@ namespace ProyectoTienda.Pantallas
             }        
         }
 
+        // REFACTOR LATER
+
+        private void FiltrarPorUsuario(string usuario)
+        {
+            var datoFiltrado = Cliente.ObtenerTablaFiltradaDeClientes().AsEnumerable()
+                               .Where(row => row.Field<string>(Cliente.ObtenerColumnaLlave()) == usuario);
+
+            ClienteTabla.DataSource = datoFiltrado.AsDataView();
+        }
+
         private void BotonConsulta_Click(object sender, EventArgs e)
         {
             string usuarioConsulta = ConsultaTexto.Text;
 
-            if(usuarioConsulta == "")
+            if (usuarioConsulta == "") return;
+
+            if(!Cliente.ChecarUsuarioExistente(usuarioConsulta))
             {
+                MessageBoxes.ShowErrorBox($"Usuario no existente");
                 return;
             }
-            else if(usuarioConsulta != "" && Cliente.UsuarioExistente(usuarioConsulta))
-            {
-                ClienteTabla.Rows.Clear();
-                Cliente cliente = Cliente.ObtenerConUsuario(usuarioConsulta);
-                DisplayCliente(cliente);
-            }
-            else
-            {
-                MessageBoxes.ShowErrorBox("Usuario no existente");
-                return;
-            }
+
+            FiltrarPorUsuario(usuarioConsulta);
         }
     }
 }

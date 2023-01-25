@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using ProyectoTienda.Gerentes;
 using ProyectoTienda.Utils;
 
@@ -14,6 +13,24 @@ namespace ProyectoTienda.Pantallas
             Gerente.CrearGerentesIniciales();
 
             WindowState = FormWindowState.Maximized;
+        }
+
+        private void MostrarSubPantalla(object pantalla)
+        {
+            if (PanelContenedor.Controls.Count > 0)
+            {
+                PanelContenedor.Controls.RemoveAt(0);
+            }
+
+            Form subPantalla = pantalla as Form;
+
+            subPantalla.TopLevel = false;
+            subPantalla.Dock = DockStyle.Fill;
+
+            PanelContenedor.Controls.Add(subPantalla);
+            PanelContenedor.Tag = subPantalla;
+
+            subPantalla.Show();
         }
 
         private void BotonCerrar_Click(object sender, EventArgs e)
@@ -38,24 +55,6 @@ namespace ProyectoTienda.Pantallas
             WindowState = FormWindowState.Normal;
             BotonMaximizar.Visible = true;
             BotonRestaurar.Visible = false;
-        }
-
-        private void MostrarSubPantalla(object pantalla)
-        {
-            if(PanelContenedor.Controls.Count > 0)
-            {
-                PanelContenedor.Controls.RemoveAt(0);
-            }
-
-            Form subPantalla = pantalla as Form;
-
-            subPantalla.TopLevel = false;
-            subPantalla.Dock = DockStyle.Fill;
-
-            PanelContenedor.Controls.Add(subPantalla);
-            PanelContenedor.Tag = subPantalla;
-
-            subPantalla.Show();
         }
 
         private void BotonClientes_Click(object sender, EventArgs e)

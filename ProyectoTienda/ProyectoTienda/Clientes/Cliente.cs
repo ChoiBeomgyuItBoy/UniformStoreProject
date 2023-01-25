@@ -1,102 +1,152 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using Darkrainbowsprinkles.OracleAccess;
 
 namespace ProyectoTienda.Clientes
 {
-    public class Cliente
+    public class Cliente : IDataInserter, IDataModifier
     {
-        private string usuario = "";
-        private string nombreCliente = "";
-        private string telefono = "";
-        private string email = "";
-        private string fechaCreacion = "";
-        private float deuda = 0;
+        // NOMBRES DE INSTANCIA
 
-        private List<Hijo> hijos = new List<Hijo>();
+        public string CLIENTE_USUARIO { get; set; } = "";
+        public string CLIENTE_NOMBRE { get; set; } = "";
+        public string CLIENTE_TELEFONO { get; set; } = "";
+        public string CLIENTE_EMAIL { get; set; } = "";
+        public string CLIENTE_CREACION { get; set; } = "";
+        public int CLIENTE_DEUDA { get; set; } = 0;
 
-        private static Dictionary<string, Cliente> clientes = new Dictionary<string, Cliente>();
-        
-        public Cliente(string usuario, string nombreCliente, string telefono, string email, Hijo hijo)
+        // NOMBRES EN TABLA SQL DEVELOPER
+
+        static readonly string tablaSQL = "CLIENTE";
+        static readonly string usuarioSQL = "CLIENTE_USUARIO";
+        static readonly string nombreSQL = "CLIENTE_NOMBRE";
+        static readonly string telefonoSQL = "CLIENTE_TELEFONO";
+        static readonly string emailSQL = "CLIENTE_EMAIL";
+        static readonly string creacionSQL = "CLIENTE_CREACION";
+        static readonly string deudaSQL = "CLIENTE_DEUDA";
+
+        public Cliente() { }
+
+        public Cliente(string clienteUsuario, string clienteNombre, string clienteEmail, string clienteTelefono)
         {
-            this.usuario = usuario;
-            this.nombreCliente = nombreCliente;
-            this.telefono = telefono;
-            this.email = email;
+            CLIENTE_USUARIO = clienteUsuario;
+            CLIENTE_NOMBRE = clienteNombre;
+            CLIENTE_EMAIL = clienteEmail;
+            CLIENTE_TELEFONO = clienteTelefono;
 
-            hijos.Add(hijo);
-
-            this.fechaCreacion = DateTime.Today.ToString();
-
-            clientes[usuario] = this;
+            CLIENTE_CREACION = DateTime.Now.ToString();
         }
 
-        // TEST - DELETE WHEN NO LONGER NECESSARY
+        // STATE PUBLICO DE CLASE
 
-        public static void CrearClientesParaDebug()
+        public static DataTable ObtenerTablaFiltradaDeClientes()
         {
-            Hijo hijoTest = new Hijo(Departamento.Kinder, "Hijo Test");
-            Cliente clienteTest = new Cliente("testUser", "Test Name", "5566778899", "hhh@gmail.com", hijoTest);
-
-            clientes[clienteTest.usuario] = clienteTest;
+            DataView dataView = new DataView(DataBaseManager.GetDataTable(tablaSQL));
+            DataTable tablaFiltrada = dataView.ToTable(false, usuarioSQL, nombreSQL, telefonoSQL);
+            return tablaFiltrada;
         }
 
-        // GETTERS
-
-        public string ObtenerUsuario() => usuario;
-
-        public string ObtenerNombre() => nombreCliente;
-
-        public string ObtenerEmail() => email;
-
-        public string ObtenerTelefono() => telefono;
-
-        public string ObtenerFechaCreacion() => fechaCreacion;
-
-        public float ObtenerDeuda() => deuda;
-
-        public IEnumerable<Hijo> ObtenerHijos()
+        public static string ObtenerColumnaLlave()
         {
-            foreach (Hijo hijo in hijos)
+            return usuarioSQL;
+        }
+
+        public static Cliente ObtenerNuevoConUsuario(string usuario)
+        {
+            return DataBaseManager.GetItemWithKey<Cliente>(tablaSQL, usuarioSQL, usuario);
+        }
+
+        public static bool ChecarUsuarioExistente(string clienteUsuario)
+        {
+            return (DataBaseManager.AlreadyHasKey(tablaSQL, usuarioSQL, clienteUsuario));
+        }
+
+        public static int MaxCapacidadUsuario()
+        {
+            return DataBaseManager.GetMaxAttributeSize(tablaSQL, usuarioSQL);
+        }
+
+        public static int MaxCapacidadNombre()
+        {
+            return DataBaseManager.GetMaxAttributeSize(tablaSQL, nombreSQL);
+        }
+
+        public static int MaxCapacidadTelefono()
+        {
+            return DataBaseManager.GetMaxAttributeSize(tablaSQL, telefonoSQL);
+        }
+
+        public static int MaxCapacidadEmail()
+        {
+            return DataBaseManager.GetMaxAttributeSize(tablaSQL, emailSQL);
+        }
+
+        // STATE PUBLICO DE INSTANCIA
+
+        public bool AplicarInsercion()
+        {
+            return DataBaseManager.InsertData(this);
+        }
+
+        public bool AplicarModificaciones()
+        {
+            return DataBaseManager.ModifyData(this);
+        }
+
+        public bool RemoverEsteCliente()
+        {
+            return DataBaseManager.DeleteItemWithKey(tablaSQL, usuarioSQL, CLIENTE_USUARIO);
+        }
+
+        // INSERCION A BASE DE DATOS
+
+        string IDataInserter.GetInsertionTableName()
+        {
+            return tablaSQL;
+        }
+
+        string IDataInserter.GetInsertionWhereClause()
+        {
+            return $"{usuarioSQL} = {usuarioSQL}";
+        }
+
+        Dictionary<string, object> IDataInserter.GetInsertionData()
+        {
+            return new Dictionary<string, object>
             {
-                yield return hijo;
-            }
+                { usuarioSQL, CLIENTE_USUARIO },
+                { nombreSQL, CLIENTE_NOMBRE },
+                { telefonoSQL, CLIENTE_TELEFONO },
+                { emailSQL, CLIENTE_EMAIL },
+                { creacionSQL, CLIENTE_CREACION },
+                { deudaSQL, CLIENTE_DEUDA }
+            };
         }
 
-        // SETTERS
+        // MODIFICACION A BASE DE DATOS
 
-        public void CambiarNombre(string nuevoNombre)
+        string IDataModifier.GetModifyingTableName()
         {
-            nombreCliente = nuevoNombre;
+            return tablaSQL;
         }
 
-        public void CambiarEmail(string nuevoEmail)
+        string IDataModifier.GetModifyingWhereClause()
         {
-            email = nuevoEmail;
+            return $"{usuarioSQL} =: {usuarioSQL}";
         }
 
-        public void CambiarTelefono(string nuevoTelefono)
+        Dictionary<string, object> IDataModifier.GetDataToModify()
         {
-            telefono = nuevoTelefono;
-        }
-
-        // STATIC METHODS
-
-        public static Cliente ObtenerConUsuario(string usuario)
-        {
-            return clientes[usuario];
-        }
-
-        public static IEnumerable<Cliente> ObtenerClientes()
-        {
-            foreach(KeyValuePair<string, Cliente> cliente in clientes)
+            return new Dictionary<string, object>
             {
-                yield return cliente.Value;
-            }
-        }
-
-        public static bool UsuarioExistente(string usuario)
-        {
-            return clientes.ContainsKey(usuario);
+                { usuarioSQL, CLIENTE_USUARIO },
+                { nombreSQL, CLIENTE_NOMBRE },
+                { telefonoSQL, CLIENTE_TELEFONO },
+                { emailSQL, CLIENTE_EMAIL },
+                { creacionSQL, CLIENTE_CREACION },
+                { deudaSQL, CLIENTE_DEUDA }
+            };
         }
     }
 }
