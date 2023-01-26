@@ -41,8 +41,14 @@ namespace ProyectoTienda.Inventario
         public static DataTable ObtenerTablaFiltradaDeProductos()
         {
             DataView dataView = new DataView(DataBaseManager.GetDataTable(tablaSQL));
-            DataTable tablaFiltrada = dataView.ToTable(false, nombreSQL, categoriaSQL, precioSQL);
-            return tablaFiltrada;
+
+            if(dataView != null)
+            {
+                DataTable tablaFiltrada = dataView.ToTable(false, nombreSQL, categoriaSQL, precioSQL);
+                return tablaFiltrada;
+            }
+
+            return null;
         }
 
         public static bool ChecarNombreExistente(string nombre)

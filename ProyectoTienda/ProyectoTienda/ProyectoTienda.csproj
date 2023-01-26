@@ -51,9 +51,12 @@
     <Compile Include="Clientes\Departamento.cs" />
     <Compile Include="Clientes\Hijo.cs" />
     <Compile Include="Clientes\ValidadorCliente.cs" />
+    <Compile Include="Compras\ValidadorCompras.cs" />
     <Compile Include="DataBase\DataBaseManager.cs" />
     <Compile Include="DataBase\IDataInserter.cs" />
     <Compile Include="DataBase\IDataModifier.cs" />
+    <Compile Include="Pantallas\IntermediarioEventos.cs" />
+    <Compile Include="Pantallas\SingletonPantallas.cs" />
     <Compile Include="Usuarios\Usuario.cs" />
     <Compile Include="Inventario\ProductoCategoria.cs" />
     <Compile Include="Inventario\ValidadorProducto.cs" />
@@ -110,6 +113,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MessageBoxes.cs" />
     <Compile Include="Utils\WindowDragging.cs" />
+    <Compile Include="Compras\Compra.cs" />
     <EmbeddedResource Include="Pantallas\PantallaClientes.resx">
       <DependentUpon>PantallaClientes.cs</DependentUpon>
     </EmbeddedResource>

@@ -57,22 +57,22 @@ namespace ProyectoTienda.Pantallas
 
         private void BotonClientes_Click(object sender, EventArgs e)
         {
-            MostrarSubPantalla(new PantallaClientes());
+            MostrarSubPantalla(SingletonPantallas.pantallaClientes);
         }
 
         private void BotonInventario_Click(object sender, EventArgs e)
         {
-            MostrarSubPantalla(new PantallaInventario());
+            MostrarSubPantalla(SingletonPantallas.pantallaInventario);
         }
 
         private void BotonCompra_Click(object sender, EventArgs e)
         {
-            MostrarSubPantalla(new PantallaCompra());
+            MostrarSubPantalla(SingletonPantallas.pantallaCompra);
         }
 
         private void BotonVentas_Click(object sender, EventArgs e)
         {
-            MostrarSubPantalla(new PantallaVentas());
+            MostrarSubPantalla(SingletonPantallas.pantallaVentas);
         }
 
         private void PanelTitulo_MouseDown(object sender, MouseEventArgs e)

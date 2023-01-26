@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTienda.Pantallas;
+using System;
 
 namespace ProyectoTienda.Inventario
 {
@@ -45,6 +46,18 @@ namespace ProyectoTienda.Inventario
                 return false;
             }
 
+            if(stockTexto.Length > Producto.MaxCapacidadStock())
+            {
+                Utils.MessageBoxes.ShowErrorBox($"Stock no debe ser mayor a {Producto.MaxCapacidadStock()}");
+                return false;
+            }
+
+            if(precioTexto.Length > Producto.MaxCapacidadPrecio())
+            {
+                Utils.MessageBoxes.ShowErrorBox($"Stock no debe ser mayor a {Producto.MaxCapacidadPrecio()}");
+                return false;
+            }
+
             return true;
         }
 
@@ -74,6 +87,30 @@ namespace ProyectoTienda.Inventario
             if (!EsFloat(precioTexto, out precioNumero))
             {
                 Utils.MessageBoxes.ShowErrorBox("Precio invalido");
+                return false;
+            }
+
+            if(stockNumero < 0 && IntermediarioEventos.CompraActiva())
+            {
+                Utils.MessageBoxes.ShowErrorBox("Producto fuera de existencia");
+                return false;
+            }
+
+            if(stockNumero <= 0 && !IntermediarioEventos.CompraActiva())
+            {
+                Utils.MessageBoxes.ShowErrorBox("Stock invalido");
+                return false;
+            }
+
+            if (stockTexto.Length > Producto.MaxCapacidadStock())
+            {
+                Utils.MessageBoxes.ShowErrorBox($"Stock no debe ser mayor a {Producto.MaxCapacidadStock()}");
+                return false;
+            }
+
+            if (precioTexto.Length > Producto.MaxCapacidadPrecio())
+            {
+                Utils.MessageBoxes.ShowErrorBox($"Stock no debe ser mayor a {Producto.MaxCapacidadPrecio()}");
                 return false;
             }
 

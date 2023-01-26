@@ -1,6 +1,7 @@
 ﻿using ProyectoTienda.Inventario;
 using ProyectoTienda.Utils;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProyectoTienda.Pantallas
@@ -21,11 +22,39 @@ namespace ProyectoTienda.Pantallas
 
         private void PantallaConsultaProducto_Load(object sender, EventArgs e)
         {
+            ChecarCompraActual();
             LlenarDropDownDeCategorias();
             DisplayProducto();
         }
 
         // UTILIDADES
+
+        private void ChecarCompraActual()
+        {
+            if(IntermediarioEventos.CompraActiva())
+            {
+                HabilitarCompra();
+            }
+            else
+            {
+                DeshabilitarCompra();
+            }
+        }
+
+        private void HabilitarCompra()
+        {
+            BotonCompra.Visible = true;
+            BotonEliminarProducto.Visible = false;
+            BotonEditar.Enabled = false;
+            BotonEditar.BackColor = Color.Gray;
+        }
+
+        private void DeshabilitarCompra()
+        {
+            BotonCompra.Visible = false;
+            BotonEliminarProducto.Visible = true;
+            BotonEditar.Enabled = true;
+        }
 
         private void DisplayProducto()
         {
@@ -80,11 +109,11 @@ namespace ProyectoTienda.Pantallas
                     producto.AplicarModificacion();
                     productoModificado?.Invoke();
                     MessageBoxes.ShowSuccessBox("Producto modificado con exito");
-                }
 
-                AbilitarInputDeTexto(false);
-                BotonEditar.Visible = true;
-                BotonActualizar.Visible = false;
+                    AbilitarInputDeTexto(false);
+                    BotonEditar.Visible = true;
+                    BotonActualizar.Visible = false;
+                }
             }
         }
 
@@ -118,9 +147,30 @@ namespace ProyectoTienda.Pantallas
 
         private void ClickFueraDeArea(object sender, EventArgs e)
         {
-            if (BotonActualizar.Visible || BotonEliminarProducto.Visible) return;
+            if (BotonActualizar.Visible || BotonEliminarProducto.Visible || BotonCompra.Visible) return;
 
             Close();
+        }
+
+        private void BotonCompra_Click(object sender, EventArgs e)
+        {
+            bool opcion = MessageBoxes.ShowYesNoOptionBox($"Agregar {producto.PRODUCTO_NOMBRE} a compra actual?", "Confirmar");
+
+            if (opcion)
+            {
+                int stockDespuesDeCompra = producto.PRODUCTO_STOCK - 1;
+
+                if(stockDespuesDeCompra < 0)
+                {
+                    MessageBoxes.ShowErrorBox("Producto fuera de existencia");
+                    return;
+                }
+
+                producto.PRODUCTO_STOCK--;
+                StockTexto.Text = producto.PRODUCTO_STOCK.ToString();
+                IntermediarioEventos.AgregarProducto(producto);
+                MessageBoxes.ShowSuccessBox("Producto agregado con exito");
+            }
         }
     }
 }

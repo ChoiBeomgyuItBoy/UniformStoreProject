@@ -1,6 +1,7 @@
 ﻿using ProyectoTienda.Clientes;
 using ProyectoTienda.Utils;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProyectoTienda.Pantallas
@@ -16,12 +17,51 @@ namespace ProyectoTienda.Pantallas
             this.cliente = cliente;
 
             InitializeComponent();
+
+            IntermediarioEventos.compraCancelada += AbilitarCompra;
+        }
+
+        // INICIALIZACION
+
+        private void PantallaConsultaCliente_Load(object sender, EventArgs e)
+        {
+            ChecarCompraActiva();
             DisplayCliente();
             DisplayHijos();
             AbilitarInputDeTexto(false);
         }
 
         // UTILIDADES
+
+        private void ChecarCompraActiva()
+        {
+            if(IntermediarioEventos.CompraActiva())
+            {
+                DeshabilitarCompra();
+            }
+            else
+            {
+                AbilitarCompra();
+            }
+        }
+
+        private void DeshabilitarCompra()
+        {
+            BotonCompra.Enabled = false;
+            BotonCompra.Text = "Compra Activa";
+            BotonCompra.BackColor = Color.Gray;
+            BotonEliminarCliente.Visible = false;
+            BotonEditar.Enabled = false;
+            BotonEditar.BackColor = Color.Gray;
+        }
+
+        private void AbilitarCompra()
+        {
+            BotonCompra.Enabled = true;
+            BotonCompra.Text = "Comenzar Compra";
+            BotonEliminarCliente.Visible = true;
+            BotonEditar.Visible = true;
+        }
 
         private void DisplayCliente()
         {
@@ -125,6 +165,16 @@ namespace ProyectoTienda.Pantallas
             if (BotonCambioCliente.Visible || BotonEliminarCliente.Visible) return;
 
             Close();           
+        }
+
+        private void BotonCompra_Click(object sender, EventArgs e)
+        {
+            //compraIniciada?.Invoke(cliente);
+            //compraActiva = true;
+
+            IntermediarioEventos.IniciarCompra(cliente);
+          
+            Close();
         }
     }
 }

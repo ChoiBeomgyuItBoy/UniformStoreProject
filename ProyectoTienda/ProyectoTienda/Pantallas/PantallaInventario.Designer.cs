@@ -116,7 +116,7 @@ namespace ProyectoTienda.Pantallas
             this.BotonFiltrarCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonFiltrarCategoria.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.BotonFiltrarCategoria.ForeColor = System.Drawing.Color.White;
-            this.BotonFiltrarCategoria.Location = new System.Drawing.Point(905, 195);
+            this.BotonFiltrarCategoria.Location = new System.Drawing.Point(990, 239);
             this.BotonFiltrarCategoria.Name = "BotonFiltrarCategoria";
             this.BotonFiltrarCategoria.Size = new System.Drawing.Size(337, 48);
             this.BotonFiltrarCategoria.TabIndex = 29;
@@ -131,7 +131,7 @@ namespace ProyectoTienda.Pantallas
             this.label7.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(878, 149);
+            this.label7.Location = new System.Drawing.Point(963, 193);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(105, 22);
             this.label7.TabIndex = 28;
@@ -141,7 +141,7 @@ namespace ProyectoTienda.Pantallas
             // 
             this.CategoriaFiltroDropDown.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
             this.CategoriaFiltroDropDown.FormattingEnabled = true;
-            this.CategoriaFiltroDropDown.Location = new System.Drawing.Point(994, 150);
+            this.CategoriaFiltroDropDown.Location = new System.Drawing.Point(1079, 194);
             this.CategoriaFiltroDropDown.Name = "CategoriaFiltroDropDown";
             this.CategoriaFiltroDropDown.Size = new System.Drawing.Size(244, 25);
             this.CategoriaFiltroDropDown.TabIndex = 27;
@@ -152,7 +152,7 @@ namespace ProyectoTienda.Pantallas
             this.label6.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(940, 99);
+            this.label6.Location = new System.Drawing.Point(1025, 143);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(261, 22);
             this.label6.TabIndex = 26;
@@ -165,7 +165,7 @@ namespace ProyectoTienda.Pantallas
             this.BotonCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonCrear.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.BotonCrear.ForeColor = System.Drawing.Color.White;
-            this.BotonCrear.Location = new System.Drawing.Point(904, 574);
+            this.BotonCrear.Location = new System.Drawing.Point(989, 618);
             this.BotonCrear.Name = "BotonCrear";
             this.BotonCrear.Size = new System.Drawing.Size(337, 48);
             this.BotonCrear.TabIndex = 20;
@@ -179,7 +179,7 @@ namespace ProyectoTienda.Pantallas
             this.label5.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(901, 524);
+            this.label5.Location = new System.Drawing.Point(986, 568);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 22);
             this.label5.TabIndex = 25;
@@ -191,7 +191,7 @@ namespace ProyectoTienda.Pantallas
             this.label4.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(907, 478);
+            this.label4.Location = new System.Drawing.Point(992, 522);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 22);
             this.label4.TabIndex = 24;
@@ -203,7 +203,7 @@ namespace ProyectoTienda.Pantallas
             this.label3.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(870, 427);
+            this.label3.Location = new System.Drawing.Point(955, 471);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 22);
             this.label3.TabIndex = 23;
@@ -215,7 +215,7 @@ namespace ProyectoTienda.Pantallas
             this.label2.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(887, 379);
+            this.label2.Location = new System.Drawing.Point(972, 423);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 22);
             this.label2.TabIndex = 20;
@@ -227,7 +227,7 @@ namespace ProyectoTienda.Pantallas
             this.label1.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(973, 319);
+            this.label1.Location = new System.Drawing.Point(1058, 363);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(195, 22);
             this.label1.TabIndex = 20;
@@ -236,7 +236,7 @@ namespace ProyectoTienda.Pantallas
             // PrecioTexto
             // 
             this.PrecioTexto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
-            this.PrecioTexto.Location = new System.Drawing.Point(997, 521);
+            this.PrecioTexto.Location = new System.Drawing.Point(1082, 565);
             this.PrecioTexto.Name = "PrecioTexto";
             this.PrecioTexto.Size = new System.Drawing.Size(241, 25);
             this.PrecioTexto.TabIndex = 22;
@@ -244,7 +244,7 @@ namespace ProyectoTienda.Pantallas
             // StockTexto
             // 
             this.StockTexto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
-            this.StockTexto.Location = new System.Drawing.Point(997, 475);
+            this.StockTexto.Location = new System.Drawing.Point(1082, 519);
             this.StockTexto.Name = "StockTexto";
             this.StockTexto.Size = new System.Drawing.Size(241, 25);
             this.StockTexto.TabIndex = 21;
@@ -253,7 +253,7 @@ namespace ProyectoTienda.Pantallas
             // 
             this.CategoriaDropDown.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
             this.CategoriaDropDown.FormattingEnabled = true;
-            this.CategoriaDropDown.Location = new System.Drawing.Point(997, 424);
+            this.CategoriaDropDown.Location = new System.Drawing.Point(1082, 468);
             this.CategoriaDropDown.Name = "CategoriaDropDown";
             this.CategoriaDropDown.Size = new System.Drawing.Size(244, 25);
             this.CategoriaDropDown.TabIndex = 20;
@@ -261,7 +261,7 @@ namespace ProyectoTienda.Pantallas
             // NombreTexto
             // 
             this.NombreTexto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
-            this.NombreTexto.Location = new System.Drawing.Point(997, 376);
+            this.NombreTexto.Location = new System.Drawing.Point(1082, 420);
             this.NombreTexto.Name = "NombreTexto";
             this.NombreTexto.Size = new System.Drawing.Size(241, 25);
             this.NombreTexto.TabIndex = 20;
@@ -288,7 +288,7 @@ namespace ProyectoTienda.Pantallas
             this.InventarioTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.InventarioTabla.EnableHeadersVisualStyles = false;
             this.InventarioTabla.GridColor = System.Drawing.Color.SteelBlue;
-            this.InventarioTabla.Location = new System.Drawing.Point(113, 150);
+            this.InventarioTabla.Location = new System.Drawing.Point(164, 127);
             this.InventarioTabla.Name = "InventarioTabla";
             this.InventarioTabla.ReadOnly = true;
             this.InventarioTabla.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -309,7 +309,7 @@ namespace ProyectoTienda.Pantallas
             this.InventarioTabla.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.InventarioTabla.RowTemplate.Height = 40;
             this.InventarioTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.InventarioTabla.Size = new System.Drawing.Size(629, 472);
+            this.InventarioTabla.Size = new System.Drawing.Size(604, 610);
             this.InventarioTabla.TabIndex = 3;
             this.InventarioTabla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.InventarioTabla_CellContentClick);
             // 
@@ -330,7 +330,6 @@ namespace ProyectoTienda.Pantallas
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InventarioTabla)).EndInit();
             this.ResumeLayout(false);
-            this.Load += new System.EventHandler(this.PantallaInventario_Load);
 
         }
 

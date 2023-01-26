@@ -14,7 +14,7 @@ namespace ProyectoTienda.Clientes
         public string CLIENTE_TELEFONO { get; set; } = "";
         public string CLIENTE_EMAIL { get; set; } = "";
         public string CLIENTE_CREACION { get; set; } = "";
-        public int CLIENTE_DEUDA { get; set; } = 0;
+        public float CLIENTE_DEUDA { get; set; } = 0;
 
         // NOMBRES EN TABLA SQL DEVELOPER
 

@@ -33,6 +33,7 @@ namespace ProyectoTienda.Pantallas
             this.BotonRegresar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BotonCompra = new System.Windows.Forms.Button();
             this.BotonEliminarProducto = new System.Windows.Forms.Button();
             this.BotonEditar = new System.Windows.Forms.Button();
             this.BotonActualizar = new System.Windows.Forms.Button();
@@ -95,6 +96,7 @@ namespace ProyectoTienda.Pantallas
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.BotonCompra);
             this.panel2.Controls.Add(this.BotonEliminarProducto);
             this.panel2.Controls.Add(this.BotonEditar);
             this.panel2.Controls.Add(this.BotonActualizar);
@@ -114,6 +116,23 @@ namespace ProyectoTienda.Pantallas
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1048, 512);
             this.panel2.TabIndex = 1;
+            // 
+            // BotonCompra
+            // 
+            this.BotonCompra.AutoSize = true;
+            this.BotonCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.BotonCompra.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BotonCompra.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Info;
+            this.BotonCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonCompra.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.BotonCompra.ForeColor = System.Drawing.Color.Black;
+            this.BotonCompra.Location = new System.Drawing.Point(23, 381);
+            this.BotonCompra.Name = "BotonCompra";
+            this.BotonCompra.Size = new System.Drawing.Size(256, 117);
+            this.BotonCompra.TabIndex = 32;
+            this.BotonCompra.Text = "Agregar a Compra Actual";
+            this.BotonCompra.UseVisualStyleBackColor = false;
+            this.BotonCompra.Click += new System.EventHandler(this.BotonCompra_Click);
             // 
             // BotonEliminarProducto
             // 
@@ -139,7 +158,7 @@ namespace ProyectoTienda.Pantallas
             this.BotonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.BotonEditar.ForeColor = System.Drawing.Color.White;
-            this.BotonEditar.Location = new System.Drawing.Point(305, 244);
+            this.BotonEditar.Location = new System.Drawing.Point(302, 244);
             this.BotonEditar.Name = "BotonEditar";
             this.BotonEditar.Size = new System.Drawing.Size(337, 48);
             this.BotonEditar.TabIndex = 31;
@@ -155,7 +174,7 @@ namespace ProyectoTienda.Pantallas
             this.BotonActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonActualizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.BotonActualizar.ForeColor = System.Drawing.Color.White;
-            this.BotonActualizar.Location = new System.Drawing.Point(305, 314);
+            this.BotonActualizar.Location = new System.Drawing.Point(302, 244);
             this.BotonActualizar.Name = "BotonActualizar";
             this.BotonActualizar.Size = new System.Drawing.Size(337, 48);
             this.BotonActualizar.TabIndex = 31;
@@ -280,8 +299,8 @@ namespace ProyectoTienda.Pantallas
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PantallaConsultaProducto";
             this.Text = "PantallaConsultaProducto";
-            this.Load += new System.EventHandler(this.PantallaConsultaProducto_Load);
             this.Deactivate += new System.EventHandler(this.ClickFueraDeArea);
+            this.Load += new System.EventHandler(this.PantallaConsultaProducto_Load);
             this.BarraTitulo.ResumeLayout(false);
             this.BarraTitulo.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -309,5 +328,6 @@ namespace ProyectoTienda.Pantallas
         private System.Windows.Forms.Button BotonActualizar;
         private System.Windows.Forms.Button BotonEditar;
         private System.Windows.Forms.Button BotonEliminarProducto;
+        private System.Windows.Forms.Button BotonCompra;
     }
 }
