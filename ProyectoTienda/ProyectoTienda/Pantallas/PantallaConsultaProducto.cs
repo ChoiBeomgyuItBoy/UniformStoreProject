@@ -9,11 +9,16 @@ namespace ProyectoTienda.Pantallas
     public partial class PantallaConsultaProducto : Form
     {
         private Producto producto;
+
         public static event Action productoModificado;
+
+        private event Action productoAgotado;
 
         public PantallaConsultaProducto(Producto producto)
         {
             this.producto = producto;
+
+            productoAgotado += ChecarProductoAgotado;
 
             InitializeComponent();
         }
@@ -22,12 +27,25 @@ namespace ProyectoTienda.Pantallas
 
         private void PantallaConsultaProducto_Load(object sender, EventArgs e)
         {
+            ChecarProductoAgotado();
             ChecarCompraActual();
             LlenarDropDownDeCategorias();
             DisplayProducto();
         }
 
         // UTILIDADES
+
+        private void ChecarProductoAgotado()
+        {
+            if (producto == null) return;
+
+            if(producto.PRODUCTO_STOCK <= 0)
+            {
+                BotonCompra.Enabled = false;
+                BotonCompra.BackColor = Color.Gray;
+                BotonCompra.Text = "Producto Agotado";
+            }
+        }
 
         private void ChecarCompraActual()
         {
@@ -158,16 +176,12 @@ namespace ProyectoTienda.Pantallas
 
             if (opcion)
             {
-                int stockDespuesDeCompra = producto.PRODUCTO_STOCK - 1;
-
-                if(stockDespuesDeCompra < 0)
-                {
-                    MessageBoxes.ShowErrorBox("Producto fuera de existencia");
-                    return;
-                }
-
                 producto.PRODUCTO_STOCK--;
+
+                productoAgotado?.Invoke();
+
                 StockTexto.Text = producto.PRODUCTO_STOCK.ToString();
+
                 IntermediarioEventos.AgregarProducto(producto);
                 MessageBoxes.ShowSuccessBox("Producto agregado con exito");
             }

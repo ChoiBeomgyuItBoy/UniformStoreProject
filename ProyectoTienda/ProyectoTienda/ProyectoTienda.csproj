@@ -57,6 +57,7 @@
     <Compile Include="DataBase\IDataModifier.cs" />
     <Compile Include="Pantallas\IntermediarioEventos.cs" />
     <Compile Include="Pantallas\SingletonPantallas.cs" />
+    <Compile Include="Reportes\Venta.cs" />
     <Compile Include="Usuarios\Usuario.cs" />
     <Compile Include="Inventario\ProductoCategoria.cs" />
     <Compile Include="Inventario\ValidadorProducto.cs" />

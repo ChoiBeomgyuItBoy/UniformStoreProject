@@ -205,7 +205,7 @@
     <value>Arial Rounded MT Bold, 11.25pt</value>
   </data>
   <data name="TextoCantidadAPagar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>917, 366</value>
+    <value>917, 323</value>
   </data>
   <data name="TextoCantidadAPagar.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 25</value>
@@ -238,7 +238,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabelCantidadAPagar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>743, 366</value>
+    <value>737, 323</value>
   </data>
   <data name="LabelCantidadAPagar.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 22</value>

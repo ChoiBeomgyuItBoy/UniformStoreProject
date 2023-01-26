@@ -6,9 +6,13 @@ namespace ProyectoTienda.Pantallas
 {
     public static class IntermediarioEventos
     {
-        public static event Action<Cliente> compraIniciada;
-        public static event Action compraCancelada;
         public static event Action<Producto> productoAgregado;
+
+        public static event Action<Cliente> compraIniciada;
+
+        public static event Action compraCancelada;
+
+        public static event Action<Cliente, int, float> compraFinalizada;
 
         static bool compraActiva = false;
 
@@ -32,6 +36,11 @@ namespace ProyectoTienda.Pantallas
         public static void AgregarProducto(Producto producto)
         {
             productoAgregado?.Invoke(producto);
+        }
+
+        public static void FinalizarCompra(Cliente cliente, int cantidad, float total)
+        {
+            compraFinalizada?.Invoke(cliente, cantidad, total);
         }
     }
 }

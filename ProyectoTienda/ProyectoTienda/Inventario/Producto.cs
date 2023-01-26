@@ -124,17 +124,17 @@ namespace ProyectoTienda.Inventario
         
         // MODIFICACION A BASE DE DATOS    
 
-        public string GetModifyingTableName()
+        string IDataModifier.GetModifyingTableName()
         {
             return tablaSQL;
         }
 
-        public string GetModifyingWhereClause()
+        string IDataModifier.GetModifyingWhereClause()
         {
             return $"{nombreSQL} =: {nombreSQL}";
         }
 
-        public Dictionary<string, object> GetDataToModify()
+        Dictionary<string, object> IDataModifier.GetDataToModify()
         {
             return new Dictionary<string, object>
             {

@@ -23,8 +23,7 @@ namespace ProyectoTienda.Pantallas
         {
             clienteActual = cliente;
             compraActual = new Compra();
-
-            ToggleCompra(true);
+            MostrarCompraUI();
         }
 
         // UTILIDADES
@@ -33,16 +32,25 @@ namespace ProyectoTienda.Pantallas
         {
             compraActual.Agregar(producto);
             TotalTexto.Text = compraActual.ObtenerTotal().ToString();
-            ToggleCompra(true);
+            DisplayCarrito();
         }
 
-        private void ToggleCompra(bool estado)
+        private void MostrarCompraUI()
         {
             if (clienteActual == null) return;
 
             DisplayCarrito();
-            ToggleGUI(estado);
+            ToggleInformacionCompra(true);
+            TogglePagoEfectivo(false);
+            TogglePagoTarjeta(false);
+        }
 
+        private void EsconderCompraUI()
+        {
+            if (clienteActual == null) return;
+
+            DisplayCarrito();
+            ToggleInformacionCompra(false);
             TogglePagoEfectivo(false);
             TogglePagoTarjeta(false);
         }
@@ -63,6 +71,23 @@ namespace ProyectoTienda.Pantallas
             TextoCVV.Visible = estado;
         }
 
+        private void ToggleInformacionCompra(bool estado)
+        {
+            NombreCliente.Text = $"Compra de {clienteActual.CLIENTE_NOMBRE}";
+
+            IndicacionLabel.Visible = !estado;
+            NombreCliente.Visible = estado;
+            BotonCancelarCompra.Visible = estado;
+            BotonPagar.Visible = estado;
+            TablaProductos.Visible = estado;
+            ProductosLabel.Visible = estado;
+            labelTicket.Visible = estado;
+            LabelTotal.Visible = estado;
+            TotalTexto.Visible = estado;
+            CheckboxPagoEfectivo.Visible = estado;
+            CheckboxPagoTarjeta.Visible = estado;
+        }
+
         private void DisplayCarrito()
         {
             if (TablaProductos == null) return;
@@ -78,25 +103,6 @@ namespace ProyectoTienda.Pantallas
                     column.Visible = false;
                 }
             }
-        }
-
-        private void ToggleGUI(bool estado)
-        {
-            NombreCliente.Text = $"Compra de {clienteActual.CLIENTE_NOMBRE}";
-
-            IndicacionLabel.Visible = !estado;
-            NombreCliente.Visible = estado;
-            BotonCancelarCompra.Visible = estado;
-            BotonPagar.Visible = estado;
-            TablaProductos.Visible = estado;
-            ProductosLabel.Visible = estado;
-            labelTicket.Visible = estado;
-            LabelTotal.Visible = estado;
-            TotalTexto.Visible = estado;
-            CheckboxPagoEfectivo.Visible = estado;
-            CheckboxPagoTarjeta.Visible = estado;
-            LabelCantidadAPagar.Visible = estado;
-            TextoCantidadAPagar.Visible = estado;
         }
 
         private void RefrescarDatos()
@@ -115,8 +121,8 @@ namespace ProyectoTienda.Pantallas
         {
             IntermediarioEventos.CancelarCompra();
 
-            ToggleCompra(false);
             RefrescarDatos();
+            EsconderCompraUI();
 
             TablaProductos.DataSource = null;
             compraActual = null;
@@ -139,7 +145,29 @@ namespace ProyectoTienda.Pantallas
             clienteActual.AplicarModificaciones();
         }
 
-        private void PagarConTarjeta()
+        private bool PagarConEfectivo()
+        {
+            string pagoEfectivoTexto = TextoCantidadAPagar.Text;
+            int pagoEfectivoNumero = 0;
+
+            if (ValidadorCompras.ValidarPagoEfectivo(pagoEfectivoTexto, out pagoEfectivoNumero))
+            {
+                if (pagoEfectivoNumero < compraActual.ObtenerTotal())
+                {
+                    return AplicarDeudaACliente(pagoEfectivoNumero);
+                }
+
+                if (pagoEfectivoNumero > compraActual.ObtenerTotal())
+                {
+                    ObtenerCambio(pagoEfectivoNumero);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool PagarConTarjeta()
         {
             string numeroTarjeta = TextoNumeroTarjeta.Text;
             string nombreTarjeta = TextoNombreTarjeta.Text;
@@ -147,20 +175,13 @@ namespace ProyectoTienda.Pantallas
 
             if (ValidadorCompras.ValidarPagoConTarjeta(nombreTarjeta, numeroTarjeta, CVV))
             {
-                bool opcion = Utils.MessageBoxes.ShowYesNoOptionBox($"Confirmar la compra?", "Confirmar");
-
-                if (opcion)
-                {
-                    AplicarCambiosAProductos();
-
-                    Utils.MessageBoxes.ShowSuccessBox("Compra exitosa");
-
-                    Cancelar();
-                }
+                return Utils.MessageBoxes.ShowYesNoOptionBox($"Confirmar la compra?", "Confirmar");
             }
+
+            return false;
         }
 
-        private void AplicarDeudaACliente(float pago)
+        private bool AplicarDeudaACliente(float pago)
         {
             float deuda = compraActual.ObtenerTotal() - pago;
             bool opcionDeuda = Utils.MessageBoxes.ShowYesNoOptionBox($"El cliente quedara a deber {deuda}", "Confirmar");
@@ -169,7 +190,10 @@ namespace ProyectoTienda.Pantallas
             {
                 clienteActual.CLIENTE_DEUDA += deuda;
                 AplicarCambiosACliente();
+                return true;
             }
+
+            return false;
         }
 
         private void ObtenerCambio(float pago)
@@ -178,54 +202,31 @@ namespace ProyectoTienda.Pantallas
             Utils.MessageBoxes.ShowSuccessBox($"Cambio para el cliente: {cambio}");
         }
 
-        private void PagarConEfectivo()
-        {
-            string pagoEfectivoTexto = TextoCantidadAPagar.Text;
-            int pagoEfectivoNumero = 0;
 
-            if (ValidadorCompras.ValidarPagoEfectivo(pagoEfectivoTexto, out pagoEfectivoNumero))
-            {
-                if(pagoEfectivoNumero < compraActual.ObtenerTotal())
-                {
-                    AplicarDeudaACliente(pagoEfectivoNumero);
-                }
-
-                if(pagoEfectivoNumero > compraActual.ObtenerTotal())
-                {
-                    ObtenerCambio(pagoEfectivoNumero);
-                }
-
-                AplicarCambiosAProductos();
-
-                Utils.MessageBoxes.ShowSuccessBox("Compra exitosa");
-
-                Cancelar();         
-            }
-        }
-
-        private void ChecarTipoDePago()
+        private bool ChecarTipoDePago()
         {
             if (!CheckboxPagoEfectivo.Checked && !CheckboxPagoTarjeta.Checked)
             {
                 Utils.MessageBoxes.ShowErrorBox("Seleccione un metodo de pago");
-                return;
+                return false;
             }
 
             if (compraActual.ObtenerListaDeProductos() == null)
             {
                 Utils.MessageBoxes.ShowErrorBox("El carrito esta vacio");
-                return;
+                return false;
             }
 
             if (CheckboxPagoEfectivo.Checked)
             {
-                PagarConEfectivo();
+                return PagarConEfectivo();
             }
-
             else if (CheckboxPagoTarjeta.Checked)
             {
-                PagarConTarjeta();
+                return PagarConTarjeta();
             }
+
+            return false;
         }
 
         // EVENTOS DE INPUT
@@ -264,7 +265,18 @@ namespace ProyectoTienda.Pantallas
 
         private void BotonPagar_Click(object sender, EventArgs e)
         {
-            ChecarTipoDePago();
+            if(ChecarTipoDePago())
+            {
+                int cantidad = compraActual.ObtenerListaDeProductos().Count;
+                float total = compraActual.ObtenerTotal();
+
+                IntermediarioEventos.FinalizarCompra(clienteActual, cantidad, total);
+
+                AplicarCambiosAProductos();
+                Utils.MessageBoxes.ShowSuccessBox("Compra exitosa");
+
+                Cancelar();
+            }
         }
     }
 }
