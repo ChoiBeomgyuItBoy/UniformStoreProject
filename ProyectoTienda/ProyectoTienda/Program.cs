@@ -15,8 +15,8 @@ namespace ProyectoTienda
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             SingletonPantallas pantallas = new SingletonPantallas();
-            Application.Run(new PantallaPrincipal());
-            //Application.Run(new PantallaLogin());
+            //Application.Run(new PantallaPrincipal());
+            Application.Run(new PantallaLogin());
         }
     }
 }

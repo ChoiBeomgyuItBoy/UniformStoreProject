@@ -1,6 +1,7 @@
 ﻿using ProyectoTienda.Clientes;
 using ProyectoTienda.Reportes;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace ProyectoTienda.Pantallas
@@ -21,6 +22,7 @@ namespace ProyectoTienda.Pantallas
         private void PantallaVentas_Load(object sender, EventArgs e)
         {
             DisplayTablaDeVentas();
+            DisplayTotalAcumulado();
         }
 
         // UTILIDADES
@@ -33,12 +35,25 @@ namespace ProyectoTienda.Pantallas
             {
                 nuevaVenta.AplicarInsercion();
                 DisplayTablaDeVentas();
+                DisplayTotalAcumulado();
             }
         }
         
         private void DisplayTablaDeVentas()
         {
             VentasTabla.DataSource = Venta.ObtenerTablaDeVentas();
+        }
+
+        private double ObtenerTotalAcumulado()
+        {
+            DataTable tablaDeVentas = (DataTable)VentasTabla.DataSource;
+
+            return Convert.ToDouble(tablaDeVentas.Compute("SUM(VENTA_TOTAL)", ""));
+        }
+
+        private void DisplayTotalAcumulado()
+        {
+            TotalVentasTexto.Text = ObtenerTotalAcumulado().ToString();
         }
 
         // EVENTOS DE INPUT

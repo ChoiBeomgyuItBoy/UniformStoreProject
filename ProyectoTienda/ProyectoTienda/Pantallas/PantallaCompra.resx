@@ -766,16 +766,16 @@
     <value>True</value>
   </data>
   <data name="NombreCliente.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Rounded MT Bold, 21.75pt</value>
+    <value>Arial Rounded MT Bold, 24pt</value>
   </data>
   <data name="NombreCliente.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="NombreCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>442, 26</value>
+    <value>443, 22</value>
   </data>
   <data name="NombreCliente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 33</value>
+    <value>196, 37</value>
   </data>
   <data name="NombreCliente.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

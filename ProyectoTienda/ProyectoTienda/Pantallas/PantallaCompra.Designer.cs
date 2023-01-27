@@ -259,7 +259,7 @@ namespace ProyectoTienda.Pantallas
             // NombreCliente
             // 
             resources.ApplyResources(this.NombreCliente, "NombreCliente");
-            this.NombreCliente.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.NombreCliente.ForeColor = System.Drawing.Color.White;
             this.NombreCliente.Name = "NombreCliente";
             // 
             // IndicacionLabel
